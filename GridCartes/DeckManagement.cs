@@ -12,9 +12,11 @@ namespace GridCartes
 {
     public partial class DeckManagement : Form
     {
-        public DeckManagement()
+        private string namePlayer;
+        public DeckManagement(string name)
         {
             InitializeComponent();
+            namePlayer = name;
         }
     }
 }

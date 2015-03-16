@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.listBoxDeckChoice = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
+            // 
+            // listBoxDeckChoice
+            // 
+            this.listBoxDeckChoice.FormattingEnabled = true;
+            this.listBoxDeckChoice.Location = new System.Drawing.Point(149, 55);
+            this.listBoxDeckChoice.Name = "listBoxDeckChoice";
+            this.listBoxDeckChoice.Size = new System.Drawing.Size(262, 212);
+            this.listBoxDeckChoice.TabIndex = 0;
             // 
             // DeckChoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 350);
+            this.Controls.Add(this.listBoxDeckChoice);
             this.Name = "DeckChoice";
             this.Text = "DeckChoice";
             this.ResumeLayout(false);
@@ -42,5 +52,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox listBoxDeckChoice;
     }
 }
