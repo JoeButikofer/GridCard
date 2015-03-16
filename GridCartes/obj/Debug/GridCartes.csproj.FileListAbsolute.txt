@@ -15,3 +15,14 @@ d:\spike\documents\visual studio 2013\Projects\GridCartes\GridCartes\obj\Debug\G
 D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\bin\Debug\GridCartes.exe.config
 D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.exe
 D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.pdb
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\bin\Debug\GridCartes.exe
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\bin\Debug\GridCartes.pdb
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\bin\Debug\System.Data.SQLite.dll
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\bin\Debug\System.Data.SQLite.pdb
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.csprojResolveAssemblyReference.cache
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.Accueil.resources
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.DeckChoice.resources
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.DeckManagement.resources
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.MainMenu.resources
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.Properties.Resources.resources
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.csproj.GenerateResource.Cache

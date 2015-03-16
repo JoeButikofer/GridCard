@@ -38,7 +38,7 @@ namespace GridCartes
             //TODO Redirection page Menu Joueur
             Console.WriteLine(listBox_Joueurs.SelectedItem.ToString());
 
-            (new MainMenu()).Show();
+            (new MainMenu(listBox_Joueurs.SelectedItem.ToString())).Show();
             this.Hide();
         }
 

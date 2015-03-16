@@ -12,9 +12,12 @@ namespace GridCartes
 {
     public partial class MainMenu : Form
     {
-        public MainMenu()
+        private string namePlayer;
+
+        public MainMenu(string name)
         {
             InitializeComponent();
+            namePlayer = name;
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
@@ -25,13 +28,13 @@ namespace GridCartes
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            (new DeckChoice()).Show();
+            (new DeckChoice(namePlayer)).Show();
             this.Hide();
         }
 
         private void btnDeck_Click(object sender, EventArgs e)
         {
-            (new DeckManagement()).Show();
+            (new DeckManagement(namePlayer)).Show();
             this.Hide();
         }
 
