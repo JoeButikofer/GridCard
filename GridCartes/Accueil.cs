@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.IO;
 
 namespace GridCartes
 {
@@ -18,7 +19,7 @@ namespace GridCartes
         public Accueil()
         {
             InitializeComponent();
-            connexionString = @"Data Source = C:\Users\Kevin\Desktop\BDD_Cartes; Version = 3";
+            connexionString = @"Data Source = " + System.AppDomain.CurrentDomain.BaseDirectory + "/BDD_Cartes; Version = 3";
 
             con = new SQLiteConnection(connexionString);
             try
