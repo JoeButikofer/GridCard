@@ -26,3 +26,16 @@ D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\Gri
 D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.MainMenu.resources
 D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.Properties.Resources.resources
 D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\GridCartes\obj\Debug\GridCartes.csproj.GenerateResource.Cache
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\bin\Debug\GridCartes.exe.config
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.exe
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.pdb
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\bin\Debug\GridCartes.exe
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\bin\Debug\GridCartes.pdb
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\bin\Debug\System.Data.SQLite.pdb
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.csprojResolveAssemblyReference.cache
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.Accueil.resources
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.DeckChoice.resources
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.DeckManagement.resources
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.MainMenu.resources
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.Properties.Resources.resources
+D:\HE-ARC\NET\GridCard\GridCard\GridCartes\obj\Debug\GridCartes.csproj.GenerateResource.Cache

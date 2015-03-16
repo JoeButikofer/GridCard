@@ -55,6 +55,9 @@
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Card.cs" />
+    <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="Deck.cs" />
     <Compile Include="DeckChoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +76,7 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Accueil.resx">
