@@ -75,11 +75,11 @@
             this.btn_Create.Name = "btn_Create";
             this.btn_Create.Size = new System.Drawing.Size(75, 23);
             this.btn_Create.TabIndex = 4;
-            this.btn_Create.Text = "Create";
+            this.btn_Create.Text = "Créer";
             this.btn_Create.UseVisualStyleBackColor = true;
             this.btn_Create.Click += new System.EventHandler(this.btn_Create_Click);
             // 
-            // Form1
+            // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,7 +89,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox_Joueurs);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "Accueil";
             this.Text = "Grid Crads";
             this.ResumeLayout(false);
             this.PerformLayout();

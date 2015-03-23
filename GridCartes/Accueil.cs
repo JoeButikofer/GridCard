@@ -14,28 +14,18 @@ namespace GridCartes
 {
     public partial class Accueil : Form
     {
-        private String connexionString;
-        private SQLiteConnection con;
+        private DatabaseHelper db;
         public Accueil()
         {
             InitializeComponent();
-            connexionString = @"Data Source = " + System.AppDomain.CurrentDomain.BaseDirectory + "/BDD_Cartes; Version = 3";
 
-            con = new SQLiteConnection(connexionString);
-            try
-            {
-                con.Open();
-                updateListBox();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            db = DatabaseHelper.Instance;
+         
+            updateListBox();
         }
 
         private void listBox_Joueurs_DoubleClick(object sender, EventArgs e)
         {
-            //TODO Redirection page Menu Joueur
             Console.WriteLine(listBox_Joueurs.SelectedItem.ToString());
 
             (new MainMenu(listBox_Joueurs.SelectedItem.ToString())).Show();
@@ -48,8 +38,7 @@ namespace GridCartes
             {
                 string sql = "insert into Joueurs (Pseudo) values (\'" + textFields_Pseudo.Text + "\')";
                 Console.WriteLine(sql);
-                SQLiteCommand command = new SQLiteCommand(sql, con);
-                command.ExecuteNonQuery();
+                db.execCommand(sql);
                 MessageBox.Show("Joueur ajouté");
                 updateListBox();
             }
@@ -63,9 +52,9 @@ namespace GridCartes
         private void updateListBox()
         {
             listBox_Joueurs.Items.Clear();
-            string sql = "select * from Joueurs";
-            SQLiteCommand command = new SQLiteCommand(sql, con);
-            SQLiteDataReader reader = command.ExecuteReader();
+            string sql = "select Pseudo from Joueurs";
+            
+            SQLiteDataReader reader = db.execCommandeReader(sql);
 
             while (reader.Read())
             {

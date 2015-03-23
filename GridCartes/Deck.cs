@@ -43,13 +43,22 @@ namespace GridCartes
             SQLiteDataReader reader = db.execCommandeReader("select * from Decks where ID_Joueurs = '" + playerId + "' and nom ='" + name + "';");
 
             reader.Read();
-            
+
+            this.id = int.Parse((String)reader["ID"]);
             loadCards((String)reader["ID"]);      
 
         }
 
-        public Deck()
+        public Deck(int _deckId)
         {
+            this.id = _deckId;
+            DatabaseHelper db = DatabaseHelper.Instance;
+            SQLiteDataReader reader = db.execCommandeReader("select * from Decks where ID = '" + _deckId + "';");
+            reader.Read();
+            this.playerId = int.Parse(""+reader["ID_Joueurs"]);
+            this.name = "" + reader["Nom"];
+
+            loadCards("" + id);
 
         }
 
@@ -84,13 +93,13 @@ namespace GridCartes
 
                 for(int i = 0;i<nbCartes;i++)
                 {
-                    String name = (String)readerCard["Nom"];
-                    int valueTop = int.Parse((String)readerCard["Valeur_Haut"]);
-                    int valueLeft = int.Parse((String)readerCard["Valeur_Gauche"]);
-                    int valueRight = int.Parse((String)readerCard["Valeur_Droite"]);
-                    int valueBottom = int.Parse((String)readerCard["Valeur_Bas"]);
-                    int level = int.Parse((String)readerCard["Level"]);
-                    String imagePath = (String)readerCard["Path_Img"];
+                    String name = ""+readerCard["Nom"];
+                    int valueTop = int.Parse(""+readerCard["Valeur_Haut"]);
+                    int valueLeft = int.Parse(""+readerCard["Valeur_Gauche"]);
+                    int valueRight = int.Parse(""+readerCard["Valeur_Droite"]);
+                    int valueBottom = int.Parse(""+readerCard["Valeur_Bas"]);
+                    int level = int.Parse(""+readerCard["Level"]);
+                    String imagePath = ""+readerCard["Path_Img"];
                     
                     Card card = new Card(int.Parse(carteId),name,valueTop,valueLeft,valueRight,valueBottom,level,imagePath);
                     addCard(card);

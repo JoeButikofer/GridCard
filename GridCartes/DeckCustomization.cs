@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace GridCartes
 {
-    public partial class DeckChoice : Form
+    public partial class DeckCustomization : Form
     {
-        private string namePlayer;
-
-        public DeckChoice(string name)
+        public DeckCustomization(Player player)
         {
             InitializeComponent();
-            namePlayer = name;
-
-
         }
-
-        private void btn_Create_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

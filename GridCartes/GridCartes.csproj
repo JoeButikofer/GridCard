@@ -64,6 +64,12 @@
     <Compile Include="DeckChoice.Designer.cs">
       <DependentUpon>DeckChoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeckCustomization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeckCustomization.Designer.cs">
+      <DependentUpon>DeckCustomization.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeckManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeckChoice.resx">
       <DependentUpon>DeckChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeckCustomization.resx">
+      <DependentUpon>DeckCustomization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeckManagement.resx">
       <DependentUpon>DeckManagement.cs</DependentUpon>

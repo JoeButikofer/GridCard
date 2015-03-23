@@ -34,13 +34,16 @@ namespace GridCartes
             String connexionString = @"Data Source = " + System.AppDomain.CurrentDomain.BaseDirectory + "/BDD_Cartes; Version = 3";
 
             con = new SQLiteConnection(connexionString);
+            con.Open();
 
         }
 
         public SQLiteDataReader execCommandeReader(String sql) 
         {
             SQLiteCommand command = new SQLiteCommand(sql, con);
-            return command.ExecuteReader();
+            Console.WriteLine(sql);
+            SQLiteDataReader reader = command.ExecuteReader();
+            return reader;
         }
 
         public void execCommand(String sql)

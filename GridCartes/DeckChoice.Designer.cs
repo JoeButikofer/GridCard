@@ -34,9 +34,9 @@
             // listBoxDeckChoice
             // 
             this.listBoxDeckChoice.FormattingEnabled = true;
-            this.listBoxDeckChoice.Location = new System.Drawing.Point(149, 55);
+            this.listBoxDeckChoice.Location = new System.Drawing.Point(149, 29);
             this.listBoxDeckChoice.Name = "listBoxDeckChoice";
-            this.listBoxDeckChoice.Size = new System.Drawing.Size(262, 212);
+            this.listBoxDeckChoice.Size = new System.Drawing.Size(262, 186);
             this.listBoxDeckChoice.TabIndex = 0;
             // 
             // DeckChoice

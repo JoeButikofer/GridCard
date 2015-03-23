@@ -52,10 +52,10 @@ namespace GridCartes
 
             reader.Read();
 
-            this.id = int.Parse((String)reader["ID"]);
+            this.id = int.Parse(""+reader["ID"]);
             this.pseudo = (String)reader["Pseudo"];
-            this.victory = int.Parse((String)reader["Nb_Games_Win"]);
-            this.defeat = int.Parse((String)reader["Nb_Games_Loose"]);
+            this.victory = int.Parse(""+reader["Nb_Games_Win"]);
+            this.defeat = int.Parse(""+reader["Nb_Games_Loose"]);
             
         }
 
