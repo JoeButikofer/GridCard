@@ -42,10 +42,9 @@ namespace GridCartes
             DatabaseHelper db = DatabaseHelper.Instance;
             SQLiteDataReader reader = db.execCommandeReader("select * from Decks where ID_Joueurs = '" + playerId + "' and nom ='" + name + "';");
 
-            while (reader.Read())
-            {
-                loadCards((String)reader["ID"]);
-            }
+            reader.Read();
+            
+            loadCards((String)reader["ID"]);      
 
         }
 
