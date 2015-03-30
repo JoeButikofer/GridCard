@@ -34,6 +34,8 @@ namespace GridCartes
             get { return listCard; }
         }
 
+        private DatabaseHelper db;
+
         public Deck(int _playerId, String _name)
         {
             this.playerId = _playerId;
@@ -52,6 +54,7 @@ namespace GridCartes
         public Deck(int _deckId)
         {
             this.id = _deckId;
+
             DatabaseHelper db = DatabaseHelper.Instance;
             SQLiteDataReader reader = db.execCommandeReader("select * from Decks where ID = '" + _deckId + "';");
             reader.Read();
@@ -74,12 +77,26 @@ namespace GridCartes
 
         public void save()
         {
+            db = DatabaseHelper.Instance;
+            db.execCommand("update Decks set nom = '" + this.name + "' where ID = '" + this.id + "';");
 
+            removeOldCards();
+
+            foreach (Card card in this.listCard)
+            {
+                db.execCommand("insert into CartesDecks (ID_Decks, ID_Cartes) values ('" + this.id + "', '" + card.Id + "');");
+            }
+
+        }
+
+        private void removeOldCards()
+        {
+            db.execCommand("delete from CartesDeckswhere ID_Decks = '" + this.id + "';");
         }
 
         private void loadCards(String deckId)
         {
-            DatabaseHelper db = DatabaseHelper.Instance;
+            db = DatabaseHelper.Instance;
             SQLiteDataReader reader = db.execCommandeReader("select * from CartesDecks where ID_Decks = '" + deckId +"';");
 
             while (reader.Read())
