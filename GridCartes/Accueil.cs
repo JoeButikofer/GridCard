@@ -36,17 +36,63 @@ namespace GridCartes
         {
             if (textFields_Pseudo.Text != "" && textFields_Pseudo.Text.All(char.IsLetterOrDigit))
             {
-                string sql = "insert into Joueurs (Pseudo) values (\'" + textFields_Pseudo.Text + "\')";
-                Console.WriteLine(sql);
-                db.execCommand(sql);
-                MessageBox.Show("Joueur ajouté");
-                updateListBox();
+                createNewPlayer();
             }
             else
             {
                 MessageBox.Show("Entrer un Pseudo correct");
             }
 
+        }
+
+        private void createNewPlayer()
+        {
+            //Create the player
+            string sql = "insert into Joueurs (Pseudo) values (\'" + textFields_Pseudo.Text + "\')";
+            Console.WriteLine(sql);
+            db.execCommand(sql);
+
+            //Retrieve the id for the newly created player
+            SQLiteDataReader reader = db.execCommandeReader("select * from Joueurs where Pseudo = '" + textFields_Pseudo.Text +"';");
+            reader.Read();
+            int id = int.Parse(""+reader["ID"]);
+
+            //Set the default available cards for the player
+
+            sql = "insert into Decks (ID_Joueurs, Nom) values (\'" + id + "\','AVAILABLE');";
+            db.execCommand(sql);
+
+            //Retrieve the id for the newly created deck
+            reader = db.execCommandeReader("select * from Decks where Nom = 'AVAILABLE' and ID_Joueurs = '" + id + "';");
+            reader.Read();
+            int availableCardsId = int.Parse("" + reader["ID"]);
+
+             //TODO prendre les decks depuis un fichier (XML ou autre)
+            for (int i = 1; i <= 3;i++)
+            {
+                sql = "insert into CartesDecks (ID_Decks, ID_Cartes) values (\'"+availableCardsId+"\',\'" + i + "\');";
+                db.execCommand(sql);
+            }
+
+            //Create default deck for the player
+
+            sql = "insert into Decks (ID_Joueurs, Nom) values (\'" + id + "\','DEFAULT');";
+            db.execCommand(sql);
+
+            //Retrieve the id for the newly created deck
+            reader = db.execCommandeReader("select * from Decks where Nom = 'DEFAULT' and ID_Joueurs = '" + id + "';");
+            reader.Read();
+            int defaultId = int.Parse("" + reader["ID"]);
+
+            //TODO prendre les decks depuis un fichier (XML ou autre)
+            for (int i = 1; i <= 2; i++)
+            {
+                sql = "insert into CartesDecks (ID_Decks, ID_Cartes) values (\'"+defaultId+"\',\'" + i + "\');";
+                db.execCommand(sql);
+            }
+
+            MessageBox.Show("Joueur ajouté");
+            updateListBox();
         }
 
         private void updateListBox()

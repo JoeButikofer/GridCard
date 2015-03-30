@@ -86,7 +86,6 @@ namespace GridCartes
             {
                 db.execCommand("insert into CartesDecks (ID_Decks, ID_Cartes) values ('" + this.id + "', '" + card.Id + "');");
             }
-
         }
 
         private void removeOldCards()

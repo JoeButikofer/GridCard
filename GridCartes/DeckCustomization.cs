@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,9 @@ namespace GridCartes
     {
         private DatabaseHelper db;
         private Player player;
+        private Deck availableCards;
+        private Deck currentDeck;
+
 
         public DeckCustomization(Player _player)
         {
@@ -27,12 +31,24 @@ namespace GridCartes
 
         private void fillCurrentDeck()
         {
-            throw new NotImplementedException();
+            listBoxDeck.Items.Clear();
+            currentDeck = player.CurrentDeck;
+
+            foreach (Card card in currentDeck.ListCard)
+            {
+                listBoxDeck.Items.Add(card);
+            }
         }
 
         private void fillListAvailableCards()
         {
-            throw new NotImplementedException();
+            listBoxCards.Items.Clear();
+            availableCards = player.getAvailableCards();
+           
+            foreach (Card card in availableCards.ListCard)
+            {
+                listBoxCards.Items.Add(card);
+            }
         }
 
         private void DeckCustomization_FormClosed(object sender, FormClosedEventArgs e)
