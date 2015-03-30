@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace GridCartes
 {
-    class Card
+    public class Card
     {
         private int id;
         public int Id

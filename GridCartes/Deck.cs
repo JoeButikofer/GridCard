@@ -7,7 +7,7 @@ using System.Data.SQLite;
 
 namespace GridCartes
 {
-    class Deck
+    public class Deck
     {
         private int id;
         public int Id
@@ -44,8 +44,8 @@ namespace GridCartes
 
             reader.Read();
 
-            this.id = int.Parse((String)reader["ID"]);
-            loadCards((String)reader["ID"]);      
+            this.id = int.Parse(""+reader["ID"]);
+            loadCards(""+reader["ID"]);      
 
         }
 

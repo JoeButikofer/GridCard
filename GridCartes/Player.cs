@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GridCartes
 {
-    class Player
+    public class Player
     {
         private int id;
 

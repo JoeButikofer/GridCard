@@ -30,7 +30,8 @@
         {
             this.btn_Apply = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxDeck = new System.Windows.Forms.ListBox();
+            this.listBoxCards = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btn_Apply
@@ -51,24 +52,34 @@
             this.btn_Cancel.Text = "Annuler";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // listBoxDeck
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(735, 38);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(313, 511);
-            this.listBox1.TabIndex = 2;
+            this.listBoxDeck.FormattingEnabled = true;
+            this.listBoxDeck.Location = new System.Drawing.Point(735, 38);
+            this.listBoxDeck.Name = "listBoxDeck";
+            this.listBoxDeck.Size = new System.Drawing.Size(313, 511);
+            this.listBoxDeck.TabIndex = 2;
+            // 
+            // listBoxCards
+            // 
+            this.listBoxCards.FormattingEnabled = true;
+            this.listBoxCards.Location = new System.Drawing.Point(64, 38);
+            this.listBoxCards.Name = "listBoxCards";
+            this.listBoxCards.Size = new System.Drawing.Size(624, 511);
+            this.listBoxCards.TabIndex = 3;
             // 
             // DeckCustomization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 614);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxCards);
+            this.Controls.Add(this.listBoxDeck);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Apply);
             this.Name = "DeckCustomization";
             this.Text = "DeckCustomization";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DeckCustomization_FormClosed);
             this.ResumeLayout(false);
 
         }
@@ -77,6 +88,7 @@
 
         private System.Windows.Forms.Button btn_Apply;
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxDeck;
+        private System.Windows.Forms.ListBox listBoxCards;
     }
 }
