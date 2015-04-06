@@ -32,6 +32,9 @@
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.listViewCards = new System.Windows.Forms.ListView();
             this.listViewDeck = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_Clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Apply
@@ -74,11 +77,42 @@
             this.listViewDeck.UseCompatibleStateImageBehavior = false;
             this.listViewDeck.ItemActivate += new System.EventHandler(this.listViewDeck_ItemActivate);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(80, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Cartes disponibles :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(715, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Deck";
+            // 
+            // btn_Clear
+            // 
+            this.btn_Clear.Location = new System.Drawing.Point(816, 556);
+            this.btn_Clear.Name = "btn_Clear";
+            this.btn_Clear.Size = new System.Drawing.Size(150, 23);
+            this.btn_Clear.TabIndex = 8;
+            this.btn_Clear.Text = "Tous Supprimer";
+            this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
+            // 
             // DeckCustomization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 614);
+            this.Controls.Add(this.btn_Clear);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewDeck);
             this.Controls.Add(this.listViewCards);
             this.Controls.Add(this.btn_Cancel);
@@ -87,6 +121,7 @@
             this.Text = "DeckCustomization";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DeckCustomization_FormClosed);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,5 +131,8 @@
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.ListView listViewCards;
         private System.Windows.Forms.ListView listViewDeck;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_Clear;
     }
 }

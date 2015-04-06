@@ -129,6 +129,12 @@ namespace GridCartes
             return true;
         }
 
+        private void btn_Clear_Click(object sender, EventArgs e)
+        {
+            currentDeck.ListCard.Clear();
+            fillCurrentDeck();
+        }
+
 
     }
 }
