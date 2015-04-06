@@ -24,6 +24,10 @@ namespace GridCartes
             InitializeComponent();
             player = _player;
             db = DatabaseHelper.Instance;
+            currentDeck = player.CurrentDeck;
+            availableCards = player.getAvailableCards();
+            textBoxDeckName.Size = TextRenderer.MeasureText(currentDeck.Name, textBoxDeckName.Font);
+            textBoxDeckName.Text = currentDeck.Name;
 
             fillListAvailableCards();
             fillCurrentDeck();
@@ -32,7 +36,6 @@ namespace GridCartes
         private void fillCurrentDeck()
         {
             listViewDeck.Items.Clear();
-            currentDeck = player.CurrentDeck;
 
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(50, 80);
@@ -49,7 +52,6 @@ namespace GridCartes
         private void fillListAvailableCards()
         {
             listViewCards.Items.Clear();
-            availableCards = player.getAvailableCards();
 
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(50,80);
@@ -107,6 +109,7 @@ namespace GridCartes
         {
             if (checkDeckValidity())
             {
+                currentDeck.Name = this.textBoxDeckName.Text;
                 currentDeck.save();
                 (new DeckManagement(player.Pseudo)).Show();
                 this.Hide();
@@ -133,6 +136,11 @@ namespace GridCartes
         {
             currentDeck.ListCard.Clear();
             fillCurrentDeck();
+        }
+
+        private void textBoxDeckName_TextChanged(object sender, EventArgs e)
+        {
+            textBoxDeckName.Size = TextRenderer.MeasureText(textBoxDeckName.Text, textBoxDeckName.Font);
         }
 
 
