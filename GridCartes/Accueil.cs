@@ -26,10 +26,11 @@ namespace GridCartes
 
         private void listBox_Joueurs_DoubleClick(object sender, EventArgs e)
         {
-            Console.WriteLine(listBox_Joueurs.SelectedItem.ToString());
-
-            (new MainMenu(listBox_Joueurs.SelectedItem.ToString())).Show();
-            this.Hide();
+            if (listBox_Joueurs.SelectedItem != null)
+            {
+                (new MainMenu(listBox_Joueurs.SelectedItem.ToString())).Show();
+                this.Hide();
+            }
         }
 
         private void btn_Create_Click(object sender, EventArgs e)

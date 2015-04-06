@@ -54,11 +54,13 @@ namespace GridCartes
 
         private void listBoxDeck_DoubleClick(object sender, EventArgs e)
         {
-
-            Deck selectedDeck = new Deck(player.Id, listBoxDeck.SelectedItem.ToString());
-            player.CurrentDeck = selectedDeck;
-           (new DeckCustomization(player)).Show();
-           this.Hide();
+            if (listBoxDeck.SelectedItem != null)
+            {
+                Deck selectedDeck = new Deck(player.Id, listBoxDeck.SelectedItem.ToString());
+                player.CurrentDeck = selectedDeck;
+                (new DeckCustomization(player)).Show();
+                this.Hide();
+            }
         }
 
         private void DeckManagement_FormClosed(object sender, FormClosedEventArgs e)
