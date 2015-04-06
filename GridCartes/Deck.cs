@@ -40,6 +40,7 @@ namespace GridCartes
         {
             this.playerId = _playerId;
             this.name = _name;
+            this.listCard = new List<Card>();
 
             DatabaseHelper db = DatabaseHelper.Instance;
             SQLiteDataReader reader = db.execCommandeReader("select * from Decks where ID_Joueurs = '" + playerId + "' and nom ='" + name + "';");
@@ -54,6 +55,7 @@ namespace GridCartes
         public Deck(int _deckId)
         {
             this.id = _deckId;
+            this.listCard = new List<Card>();
 
             DatabaseHelper db = DatabaseHelper.Instance;
             SQLiteDataReader reader = db.execCommandeReader("select * from Decks where ID = '" + _deckId + "';");
@@ -90,7 +92,7 @@ namespace GridCartes
 
         private void removeOldCards()
         {
-            db.execCommand("delete from CartesDeckswhere ID_Decks = '" + this.id + "';");
+            db.execCommand("delete from CartesDecks where ID_Decks = '" + this.id + "';");
         }
 
         private void loadCards(String deckId)
@@ -100,8 +102,8 @@ namespace GridCartes
 
             while (reader.Read())
             {
-                String carteId = (String)reader["ID_Cartes"];
-                int nbCartes = int.Parse((String)reader["Nb_Cartes"]);
+                String carteId = ""+reader["ID_Cartes"];
+                int nbCartes = int.Parse(""+reader["Nb_Cartes"]);
 
                 SQLiteDataReader readerCard = db.execCommandeReader("select * from Cartes where ID ='" + carteId + "'");
 
@@ -110,10 +112,10 @@ namespace GridCartes
                 for(int i = 0;i<nbCartes;i++)
                 {
                     String name = ""+readerCard["Nom"];
-                    int valueTop = int.Parse(""+readerCard["Valeur_Haut"]);
-                    int valueLeft = int.Parse(""+readerCard["Valeur_Gauche"]);
-                    int valueRight = int.Parse(""+readerCard["Valeur_Droite"]);
-                    int valueBottom = int.Parse(""+readerCard["Valeur_Bas"]);
+                    int valueTop = int.Parse(""+readerCard["Value_Haut"]);
+                    int valueLeft = int.Parse(""+readerCard["Value_Gauche"]);
+                    int valueRight = int.Parse(""+readerCard["Value_Droite"]);
+                    int valueBottom = int.Parse(""+readerCard["Value_Bas"]);
                     int level = int.Parse(""+readerCard["Level"]);
                     String imagePath = ""+readerCard["Path_Img"];
                     

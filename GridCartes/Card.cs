@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 
 namespace GridCartes
 {
@@ -67,7 +69,11 @@ namespace GridCartes
             valueBottom = _valueBottom;
             level = _level;
 
-            image = Image.FromFile(_imagePath);
+            String path = Path.Combine(
+        Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+        _imagePath);
+            Console.Write(path);
+            image = Image.FromFile(path);
         }
 
     }

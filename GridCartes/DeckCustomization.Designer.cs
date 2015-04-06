@@ -30,8 +30,8 @@
         {
             this.btn_Apply = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.listBoxDeck = new System.Windows.Forms.ListBox();
-            this.listBoxCards = new System.Windows.Forms.ListBox();
+            this.listViewCards = new System.Windows.Forms.ListView();
+            this.listViewDeck = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // btn_Apply
@@ -42,6 +42,7 @@
             this.btn_Apply.TabIndex = 0;
             this.btn_Apply.Text = "Appliquer";
             this.btn_Apply.UseVisualStyleBackColor = true;
+            this.btn_Apply.Click += new System.EventHandler(this.btn_Apply_Click);
             // 
             // btn_Cancel
             // 
@@ -51,30 +52,35 @@
             this.btn_Cancel.TabIndex = 1;
             this.btn_Cancel.Text = "Annuler";
             this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
-            // listBoxDeck
+            // listViewCards
             // 
-            this.listBoxDeck.FormattingEnabled = true;
-            this.listBoxDeck.Location = new System.Drawing.Point(735, 38);
-            this.listBoxDeck.Name = "listBoxDeck";
-            this.listBoxDeck.Size = new System.Drawing.Size(313, 511);
-            this.listBoxDeck.TabIndex = 2;
+            this.listViewCards.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listViewCards.Location = new System.Drawing.Point(83, 38);
+            this.listViewCards.Name = "listViewCards";
+            this.listViewCards.Size = new System.Drawing.Size(619, 511);
+            this.listViewCards.TabIndex = 4;
+            this.listViewCards.UseCompatibleStateImageBehavior = false;
+            this.listViewCards.ItemActivate += new System.EventHandler(this.listViewCards_ItemActivate);
             // 
-            // listBoxCards
+            // listViewDeck
             // 
-            this.listBoxCards.FormattingEnabled = true;
-            this.listBoxCards.Location = new System.Drawing.Point(64, 38);
-            this.listBoxCards.Name = "listBoxCards";
-            this.listBoxCards.Size = new System.Drawing.Size(624, 511);
-            this.listBoxCards.TabIndex = 3;
+            this.listViewDeck.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listViewDeck.Location = new System.Drawing.Point(718, 38);
+            this.listViewDeck.Name = "listViewDeck";
+            this.listViewDeck.Size = new System.Drawing.Size(329, 511);
+            this.listViewDeck.TabIndex = 5;
+            this.listViewDeck.UseCompatibleStateImageBehavior = false;
+            this.listViewDeck.ItemActivate += new System.EventHandler(this.listViewDeck_ItemActivate);
             // 
             // DeckCustomization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 614);
-            this.Controls.Add(this.listBoxCards);
-            this.Controls.Add(this.listBoxDeck);
+            this.Controls.Add(this.listViewDeck);
+            this.Controls.Add(this.listViewCards);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Apply);
             this.Name = "DeckCustomization";
@@ -88,7 +94,7 @@
 
         private System.Windows.Forms.Button btn_Apply;
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.ListBox listBoxDeck;
-        private System.Windows.Forms.ListBox listBoxCards;
+        private System.Windows.Forms.ListView listViewCards;
+        private System.Windows.Forms.ListView listViewDeck;
     }
 }
