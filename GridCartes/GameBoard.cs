@@ -15,12 +15,24 @@ namespace GridCartes
         private Player player;
         private Deck currentDeck;
         private Card selectedCard;
+        private Case[,] tabCase;
 
         public GameBoard(Player p)
         {
             InitializeComponent();
+            tabCase = new Case[4,4];
             player = p;
             currentDeck = player.CurrentDeck;
+
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    tabCase[i, j] = new Case(i,j);
+                }
+            }
+
 
             /*TextBox text = new TextBox();
             text.Text = "test1";
@@ -72,27 +84,34 @@ namespace GridCartes
                 int x = (e.X - resteX) / width;
                 int y = (e.Y - resteY) / height;
 
-                Panel p = new Panel();
-                p.BackColor = Color.Red;
+                tabCase[x, y].Card = selectedCard;
+                tabCase[x, y].Player = 1;
 
-                Image img = (Image)(new Bitmap(selectedCard.Image, new Size(width-4, height-4)));
+                Panel p = new Panel();
+                //p.BackColor = Color.Red;
+
+                Image img = (Image)(new Bitmap(tabCase[x, y].draw(), new Size(width - 4, height - 4)));
 
 
                 p.BackgroundImage = img;
-                p.Visible = false;
 
                 tableLayoutPanel1.Controls.Add(p, x, y);
 
-                p.Visible = true;
+
+                
+
+
+
+
 
                 currentDeck.removeCard(selectedCard);
                 fillHandCards();
                 selectedCard = null;
             }
-            Console.WriteLine("qidhipozahdazhdipazgdfazodpigavdb");
           
 
         }
+
 
         private void GameBoard_FormClosed(object sender, FormClosedEventArgs e)
         {

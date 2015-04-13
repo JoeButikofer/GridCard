@@ -56,6 +56,7 @@
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
+    <Compile Include="Case.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="DeckChoice.cs">
