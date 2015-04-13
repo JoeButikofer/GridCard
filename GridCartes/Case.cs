@@ -54,16 +54,16 @@ namespace GridCartes
             Graphics graphics = Graphics.FromImage(newBitmap);
             graphics.DrawImage(card.Image, 0, 0);
 
-            // Create pen.
+            // Create Brush.
             Color color = Color.FromArgb(50,0,0,255);
             if (player == 2) color = Color.FromArgb(50,255,0,0);
-            Pen pen = new Pen(color, 3);
+            SolidBrush brush = new SolidBrush(color);
 
             // Create rectangle.
             Rectangle rect = new Rectangle(0, 0, newBitmap.Width, newBitmap.Height);
 
             // Draw rectangle to Image.
-            graphics.DrawRectangle(pen, rect);
+            graphics.FillRectangle(brush, rect);
 
             return newBitmap;
         }
