@@ -26,12 +26,14 @@ namespace GridCartes
             player = p;
             currentDeck = player.CurrentDeck;
 
+            int width = (int)(tableLayoutPanel1.Size.Width / 4);
+            int height = (int)(tableLayoutPanel1.Size.Height / 4);
 
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    tabCase[i, j] = new Case(i,j);
+                    tabCase[i, j] = new Case(i,j,width-4,height-4);
                 }
             }
 

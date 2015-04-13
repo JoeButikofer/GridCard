@@ -40,12 +40,13 @@ namespace GridCartes
             set { player = value; }
         }
 
-        public Case(int _x, int _y) : base()
+        public Case(int _x, int _y, int _width, int _height) : base()
         {
             x = _x;
             y = _y;
             card = null;
             player = 0;
+            this.Size = new Size(_width, _height);
             updateImage();
         }
 
@@ -104,7 +105,7 @@ namespace GridCartes
             if (player != 0)
             {
                 //we need to create a non indexed image so we can modify it
-                Bitmap newBitmap = new Bitmap(102, 71);//Bitmap(card.Image.Width, card.Image.Height);
+                Bitmap newBitmap = new Bitmap(card.Image.Width, card.Image.Height);
                 Graphics graphics = Graphics.FromImage(newBitmap);
                 graphics.DrawImage(card.Image, 0, 0);
 
@@ -118,8 +119,7 @@ namespace GridCartes
 
                 // Draw rectangle to Image.
                 graphics.FillRectangle(brush, rect);
-
-                this.BackgroundImage = (Image)newBitmap;
+                this.BackgroundImage = new Bitmap(newBitmap, this.Size);
             }
             else
             {
