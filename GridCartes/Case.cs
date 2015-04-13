@@ -70,35 +70,40 @@ namespace GridCartes
 
         public void fight(Card opponentCard, Direction attackDirection)
         {
-            int myValue = 0;
-            int opponentValue = 0;
-            switch(attackDirection)
+            if(!isEmpty())
             {
-                case Direction.UP:
-                    myValue = card.ValueBottom;
-                    opponentValue = opponentCard.ValueTop;
-                    break;
-                case Direction.DOWN:
-                    myValue = card.ValueTop;
-                    opponentValue = opponentCard.ValueBottom;
-                    break;
-                case Direction.LEFT:
-                     myValue = card.ValueRight;
-                    opponentValue = opponentCard.ValueLeft;
-                    break;
-                case Direction.RIGHT:
-                     myValue = card.ValueLeft;
-                    opponentValue = opponentCard.ValueRight;
-                    break;
+                int myValue = 0;
+                int opponentValue = 0;
+                switch (attackDirection)
+                {
+                    case Direction.UP:
+                        myValue = card.ValueBottom;
+                        opponentValue = opponentCard.ValueTop;
+                        break;
+                    case Direction.DOWN:
+                        myValue = card.ValueTop;
+                        opponentValue = opponentCard.ValueBottom;
+                        break;
+                    case Direction.LEFT:
+                        myValue = card.ValueRight;
+                        opponentValue = opponentCard.ValueLeft;
+                        break;
+                    case Direction.RIGHT:
+                        myValue = card.ValueLeft;
+                        opponentValue = opponentCard.ValueRight;
+                        break;
+                }
+
+                if (myValue < opponentValue)
+                {
+                    Console.WriteLine("CHANGEMENT COLOR");
+                    if (player == 1)
+                        player = 2;
+                    else
+                        player = 1;
+                }
             }
 
-            if(myValue < opponentValue)
-            {
-                if (player == 1)
-                    player = 2;
-                else
-                    player = 1;
-            }
         }
 
         public bool isEmpty()
