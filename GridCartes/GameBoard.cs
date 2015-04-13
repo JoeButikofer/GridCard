@@ -86,23 +86,41 @@ namespace GridCartes
                 int x = (e.X - resteX) / width;
                 int y = (e.Y - resteY) / height;
 
-                tabCase[x, y].Card = selectedCard;
-                tabCase[x, y].Player = 1;
 
-                Panel p = new Panel();
-                //p.BackColor = Color.Red;
-
-                Image img = (Image)(new Bitmap(tabCase[x, y].draw(), new Size(width - 4, height - 4)));
-
-
-                p.BackgroundImage = img;
-
-                tableLayoutPanel1.Controls.Add(p, x, y);
-
+                tabCase[x, y].placeCard(selectedCard, 1);
 
                 
+                if (x != 0)
+                {
+                    tabCase[x - 1, y].fight(tabCase[x, y].Card, Direction.LEFT);
+                }
+                else if (x != 3)
+                {
+                    tabCase[x + 1, y].fight(tabCase[x, y].Card, Direction.RIGHT);
+                }
+                if (y != 0)
+                {
+                    tabCase[x, y - 1].fight(tabCase[x, y].Card, Direction.UP);
+                }
+                else if (y != 3)
+                {
+                    tabCase[x, y + 1].fight(tabCase[x, y].Card, Direction.DOWN);
+                }
 
 
+
+                /*Console.WriteLine(width);
+                Console.WriteLine(height);*/
+
+
+                //p.BackColor = Color.Red;
+
+                //Image img = (Image)(new Bitmap(tabCase[x, y].draw(), new Size(width - 4, height - 4)));
+
+
+               //p.BackgroundImage = img;
+
+                tableLayoutPanel1.Controls.Add(tabCase[x, y], x, y);
 
 
 

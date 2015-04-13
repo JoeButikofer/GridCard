@@ -81,15 +81,16 @@ namespace GridCartes
                         opponentValue = opponentCard.ValueRight;
                         break;
                 }
+                if (myValue < opponentValue)
+                {
+                    if (player == 1)
+                        player = 2;
+                    else
+                        player = 1;
+                    updateImage();
+                }
             }
-            if(myValue < opponentValue)
-            {
-                if (player == 1)
-                    player = 2;
-                else
-                    player = 1;
-                updateImage();
-            }
+           
 
         }
 
@@ -103,7 +104,7 @@ namespace GridCartes
             if (player != 0)
             {
                 //we need to create a non indexed image so we can modify it
-                Bitmap newBitmap = new Bitmap(card.Image.Width, card.Image.Height);
+                Bitmap newBitmap = new Bitmap(102, 71);//Bitmap(card.Image.Width, card.Image.Height);
                 Graphics graphics = Graphics.FromImage(newBitmap);
                 graphics.DrawImage(card.Image, 0, 0);
 
@@ -118,7 +119,7 @@ namespace GridCartes
                 // Draw rectangle to Image.
                 graphics.FillRectangle(brush, rect);
 
-                this.BackgroundImage = newBitmap;
+                this.BackgroundImage = (Image)newBitmap;
             }
             else
             {
