@@ -38,6 +38,7 @@
             this.listBoxDeckChoice.Name = "listBoxDeckChoice";
             this.listBoxDeckChoice.Size = new System.Drawing.Size(262, 186);
             this.listBoxDeckChoice.TabIndex = 0;
+            this.listBoxDeckChoice.SelectedIndexChanged += new System.EventHandler(this.listBoxDeckChoice_SelectedIndexChanged);
             // 
             // DeckChoice
             // 
@@ -47,6 +48,7 @@
             this.Controls.Add(this.listBoxDeckChoice);
             this.Name = "DeckChoice";
             this.Text = "DeckChoice";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DeckChoice_FormClosed);
             this.ResumeLayout(false);
 
         }

@@ -76,6 +76,12 @@
     <Compile Include="DeckManagement.Designer.cs">
       <DependentUpon>DeckManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameBoard.Designer.cs">
+      <DependentUpon>GameBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeckManagement.resx">
       <DependentUpon>DeckManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameBoard.resx">
+      <DependentUpon>GameBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
