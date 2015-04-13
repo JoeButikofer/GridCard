@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.textBoxDeckName = new System.Windows.Forms.TextBox();
+            this.lbl_NbCards = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Apply
@@ -115,11 +116,21 @@
             this.textBoxDeckName.TabIndex = 9;
             this.textBoxDeckName.TextChanged += new System.EventHandler(this.textBoxDeckName_TextChanged);
             // 
+            // lbl_NbCards
+            // 
+            this.lbl_NbCards.AutoSize = true;
+            this.lbl_NbCards.Location = new System.Drawing.Point(715, 72);
+            this.lbl_NbCards.Name = "lbl_NbCards";
+            this.lbl_NbCards.Size = new System.Drawing.Size(100, 13);
+            this.lbl_NbCards.TabIndex = 10;
+            this.lbl_NbCards.Text = "Nombre de cartes : ";
+            // 
             // DeckCustomization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 693);
+            this.Controls.Add(this.lbl_NbCards);
             this.Controls.Add(this.textBoxDeckName);
             this.Controls.Add(this.btn_Clear);
             this.Controls.Add(this.label2);
@@ -146,5 +157,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_Clear;
         private System.Windows.Forms.TextBox textBoxDeckName;
+        private System.Windows.Forms.Label lbl_NbCards;
     }
 }

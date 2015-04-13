@@ -42,7 +42,7 @@ namespace GridCartes
         private void updateListBox()
         {
             listBoxDeck.Items.Clear();
-            string sql = "select Nom from Decks where ID_Joueurs = '"+player.Id+"' ;";
+            string sql = "select Nom from Decks where ID_Joueurs = '" + player.Id + "' and Nom !='AVAILABLE' and Nom !='DEFAULT';";
 
             SQLiteDataReader reader = db.execCommandeReader(sql);
 

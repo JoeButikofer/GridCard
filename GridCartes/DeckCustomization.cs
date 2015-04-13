@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace GridCartes
 {
+    enum DeckStatus {OK, DeckTooLong, DeckTooShort, TooMuchCardUsed, DeckLevelTooHigh};
+
     public partial class DeckCustomization : Form
     {
         private DatabaseHelper db;
@@ -47,6 +49,8 @@ namespace GridCartes
 
             }
             listViewDeck.LargeImageList = imageList;
+
+            lbl_NbCards.Text = "Nombre de cartes : "+currentDeck.ListCard.Count;
         }
 
         private void fillListAvailableCards()
@@ -79,14 +83,18 @@ namespace GridCartes
 
             Card selectedCard = availableCards.ListCard.ElementAt(i);
 
-            if (checkCardToDeckValidity(selectedCard))
+            switch(checkCardToDeckValidity(selectedCard))
             {
-                currentDeck.addCard(selectedCard);
-                fillCurrentDeck();
-            }
-            else
-            {
-                MessageBox.Show("TODO message selon erreur");
+                case DeckStatus.OK:
+                    currentDeck.addCard(selectedCard);
+                    fillCurrentDeck();
+                    break;
+                case DeckStatus.TooMuchCardUsed:
+                    MessageBox.Show("Vous avez déjà utilisé le maximum de fois cette carte");
+                    break;
+                default:
+                    MessageBox.Show("Erreur inconnue");
+                    break;
             }
         }
 
@@ -96,6 +104,7 @@ namespace GridCartes
 
             currentDeck.ListCard.RemoveAt(i);
             listViewDeck.Items.RemoveAt(i);
+            lbl_NbCards.Text = "Nombre de cartes : " + currentDeck.ListCard.Count;
 
         }
 
@@ -107,29 +116,46 @@ namespace GridCartes
 
         private void btn_Apply_Click(object sender, EventArgs e)
         {
-            if (checkDeckValidity())
+            DeckStatus deckStatus = checkDeckValidity();
+            switch(deckStatus)
             {
-                currentDeck.Name = this.textBoxDeckName.Text;
-                currentDeck.save();
-                (new DeckManagement(player.Pseudo)).Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("TODO message selon erreur");
+                case DeckStatus.OK:
+                    currentDeck.Name = this.textBoxDeckName.Text;
+                    currentDeck.save();
+                    (new DeckManagement(player.Pseudo)).Show();
+                    this.Hide();
+                    break;
+                case DeckStatus.DeckTooLong:
+                     MessageBox.Show("Le deck contient trop de cartes, il doit contenir au maximum 20 cartes");
+                    break;
+                case DeckStatus.DeckTooShort:
+                     MessageBox.Show("Le deck ne contient pas assez de cartes, il doit contenir au minimum 10 cartes");
+                    break;
+                default:
+                    MessageBox.Show("Erreur inconnue");
+                    break;
             }
         }
 
-        private bool checkCardToDeckValidity(Card card)
+        private DeckStatus checkCardToDeckValidity(Card card)
         {
             //TODO check niveau du deck, nombre de cartes, ....
-            return true;
+            return DeckStatus.OK;
         }
 
-        private bool checkDeckValidity()
+        private DeckStatus checkDeckValidity()
         {
             //TODO check niveau du deck, nombre de cartes, ....
-            return true;
+
+            if (currentDeck.ListCard.Count < 10)
+            {
+                return DeckStatus.DeckTooShort;
+            }
+            if(currentDeck.ListCard.Count > 20)
+            {
+                return DeckStatus.DeckTooLong;
+            }
+            return DeckStatus.OK;
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)

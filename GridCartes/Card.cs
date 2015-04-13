@@ -87,10 +87,12 @@ namespace GridCartes
             Font font = new Font("Arial", 100);
             Brush brush = Brushes.Black;
 
-            String text = ""+this.valueTop;
+            //Default String for the text size
+            String text = "12";
             //Since we have numbers, the text size will not change too much
             SizeF textSize = graphics.MeasureString(text, font);
 
+            text = "" + this.valueTop;
             graphics.DrawString(text, font, brush, img.Width/2 - textSize.Width/2, 0);
 
             text = "" + this.valueLeft;
