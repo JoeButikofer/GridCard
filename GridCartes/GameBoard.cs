@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace GridCartes
 {
+    enum Direction {UP, DOWN, LEFT, RIGHT };
+
     public partial class GameBoard : Form
     {
         private Player player;
