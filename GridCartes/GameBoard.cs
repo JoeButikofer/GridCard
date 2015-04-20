@@ -121,17 +121,34 @@ namespace GridCartes
                 {
                     tabCase[x - 1, y].fight(tabCase[x, y].Card, Direction.LEFT, 1);
                 }
-                else if (x != 3)
+                else
+                {
+                    tabCase[3, y].fight(tabCase[x, y].Card, Direction.LEFT);
+                }
+
+                if (x != 3)
                 {
                     tabCase[x + 1, y].fight(tabCase[x, y].Card, Direction.RIGHT, 1);
+                }
+                else
+                {
+                    tabCase[0, y].fight(tabCase[x, y].Card, Direction.RIGHT);
                 }
                 if (y != 0)
                 {
                     tabCase[x, y - 1].fight(tabCase[x, y].Card, Direction.UP, 1);
                 }
-                else if (y != 3)
+                else
+                {
+                    tabCase[x, 3].fight(tabCase[x, y].Card, Direction.UP);
+                }
+                if (y != 3)
                 {
                     tabCase[x, y + 1].fight(tabCase[x, y].Card, Direction.DOWN, 1);
+                }
+                else
+                {
+                    tabCase[x, 0].fight(tabCase[x, y].Card, Direction.DOWN);
                 }
 
 
