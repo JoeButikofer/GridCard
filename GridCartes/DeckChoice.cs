@@ -60,7 +60,7 @@ namespace GridCartes
         {
             try
             {
-                //TODO changer address 
+                //TODO changer adresse 
                 TcpClient tcpClient = new TcpClient(IPAddress.Loopback.ToString(), 8012);
                 Stream stream = tcpClient.GetStream();
 
