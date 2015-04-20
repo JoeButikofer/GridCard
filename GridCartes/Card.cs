@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Data.SQLite;
 
 namespace GridCartes
 {
@@ -59,7 +60,9 @@ namespace GridCartes
             get { return image; }
         }
 
-        public Card(int _id, String _name, int _valueTop, int _valueLeft, int _valueRight, int _valueBottom, int _level, String _imagePath)
+        private DatabaseHelper db;
+
+       /* public Card(int _id, String _name, int _valueTop, int _valueLeft, int _valueRight, int _valueBottom, int _level, String _imagePath)
         {
             id = _id;
             name = _name;
@@ -71,6 +74,32 @@ namespace GridCartes
 
             String path = Path.Combine(
         Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), _imagePath);
+
+            Image baseImage = Image.FromFile(path);
+
+            image = addValuesToImage(baseImage);
+        }*/
+
+        public Card(int _id)
+        {
+            id = _id;
+
+            DatabaseHelper db = DatabaseHelper.Instance;
+            SQLiteDataReader reader = db.execCommandeReader("select * from Cartes where ID = '" + id + "';");
+
+            reader.Read();
+
+            this.id = int.Parse("" + reader["ID"]);
+            name = "" + reader["Nom"];
+            valueTop = int.Parse("" + reader["Value_Haut"]);
+            valueLeft = int.Parse("" + reader["Value_Gauche"]);
+            valueRight = int.Parse("" + reader["Value_Droite"]);
+            valueBottom = int.Parse("" + reader["Value_Bas"]);
+            level = int.Parse("" + reader["Level"]);
+            String imagePath = "" + reader["Path_Img"];
+
+            String path = Path.Combine(
+        Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), imagePath);
 
             Image baseImage = Image.FromFile(path);
 

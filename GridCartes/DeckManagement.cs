@@ -68,5 +68,11 @@ namespace GridCartes
             //Ferme tout le programme
             System.Windows.Forms.Application.Exit();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            (new MainMenu(player.Pseudo)).Show();
+            this.Hide();
+        }
     }
 }

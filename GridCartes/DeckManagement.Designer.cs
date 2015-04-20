@@ -32,6 +32,7 @@
             this.textFields_Deck = new System.Windows.Forms.TextBox();
             this.labelDeck = new System.Windows.Forms.Label();
             this.listBoxDeck = new System.Windows.Forms.ListBox();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Create
@@ -69,11 +70,22 @@
             this.listBoxDeck.TabIndex = 8;
             this.listBoxDeck.DoubleClick += new System.EventHandler(this.listBoxDeck_DoubleClick);
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(40, 26);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 12;
+            this.btnBack.Text = "Retour";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // DeckManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 399);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btn_Create);
             this.Controls.Add(this.textFields_Deck);
             this.Controls.Add(this.labelDeck);
@@ -92,5 +104,6 @@
         private System.Windows.Forms.TextBox textFields_Deck;
         private System.Windows.Forms.Label labelDeck;
         private System.Windows.Forms.ListBox listBoxDeck;
+        private System.Windows.Forms.Button btnBack;
     }
 }

@@ -57,9 +57,9 @@ namespace GridCartes
             updateImage();
         }
 
-        public void fight(Card opponentCard, Direction attackDirection)
+        public void fight(Card opponentCard, Direction attackDirection, int opponent)
         {
-            if(!isEmpty())
+            if(!isEmpty() && player != opponent)
             {
                 int myValue = 0;
                 int opponentValue = 0;
@@ -84,10 +84,7 @@ namespace GridCartes
                 }
                 if (myValue < opponentValue)
                 {
-                    if (player == 1)
-                        player = 2;
-                    else
-                        player = 1;
+                    player = opponent;
                     updateImage();
                 }
             }

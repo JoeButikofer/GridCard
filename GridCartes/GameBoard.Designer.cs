@@ -31,6 +31,9 @@
             this.tableLayoutGame = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listViewHandCards = new System.Windows.Forms.ListView();
+            this.lblMyScore = new System.Windows.Forms.Label();
+            this.lblHisScore = new System.Windows.Forms.Label();
+            this.lblTurn = new System.Windows.Forms.Label();
             this.tableLayoutGame.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +45,9 @@
             this.tableLayoutGame.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutGame.Controls.Add(this.tableLayoutPanel1, 1, 1);
             this.tableLayoutGame.Controls.Add(this.listViewHandCards, 1, 2);
+            this.tableLayoutGame.Controls.Add(this.lblMyScore, 0, 1);
+            this.tableLayoutGame.Controls.Add(this.lblHisScore, 2, 1);
+            this.tableLayoutGame.Controls.Add(this.lblTurn, 1, 0);
             this.tableLayoutGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutGame.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutGame.Name = "tableLayoutGame";
@@ -85,6 +91,34 @@
             this.listViewHandCards.UseCompatibleStateImageBehavior = false;
             this.listViewHandCards.ItemActivate += new System.EventHandler(this.listViewHandCards_ItemActivate);
             // 
+            // lblMyScore
+            // 
+            this.lblMyScore.AutoSize = true;
+            this.lblMyScore.Location = new System.Drawing.Point(3, 48);
+            this.lblMyScore.Name = "lblMyScore";
+            this.lblMyScore.Size = new System.Drawing.Size(65, 13);
+            this.lblMyScore.TabIndex = 2;
+            this.lblMyScore.Text = "My score : 0";
+            // 
+            // lblHisScore
+            // 
+            this.lblHisScore.AutoSize = true;
+            this.lblHisScore.Location = new System.Drawing.Point(555, 48);
+            this.lblHisScore.Name = "lblHisScore";
+            this.lblHisScore.Size = new System.Drawing.Size(66, 13);
+            this.lblHisScore.TabIndex = 3;
+            this.lblHisScore.Text = "His score : 0";
+            // 
+            // lblTurn
+            // 
+            this.lblTurn.AutoSize = true;
+            this.lblTurn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblTurn.Location = new System.Drawing.Point(141, 0);
+            this.lblTurn.Name = "lblTurn";
+            this.lblTurn.Size = new System.Drawing.Size(29, 13);
+            this.lblTurn.TabIndex = 4;
+            this.lblTurn.Text = "Turn";
+            // 
             // GameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,6 +129,7 @@
             this.Text = "GameBoard";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameBoard_FormClosed);
             this.tableLayoutGame.ResumeLayout(false);
+            this.tableLayoutGame.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -104,5 +139,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutGame;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListView listViewHandCards;
+        private System.Windows.Forms.Label lblMyScore;
+        private System.Windows.Forms.Label lblHisScore;
+        private System.Windows.Forms.Label lblTurn;
     }
 }

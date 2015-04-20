@@ -111,15 +111,16 @@ namespace GridCartes
 
                 for(int i = 0;i<nbCartes;i++)
                 {
-                    String name = ""+readerCard["Nom"];
+                    /*String name = ""+readerCard["Nom"];
                     int valueTop = int.Parse(""+readerCard["Value_Haut"]);
                     int valueLeft = int.Parse(""+readerCard["Value_Gauche"]);
                     int valueRight = int.Parse(""+readerCard["Value_Droite"]);
                     int valueBottom = int.Parse(""+readerCard["Value_Bas"]);
                     int level = int.Parse(""+readerCard["Level"]);
-                    String imagePath = ""+readerCard["Path_Img"];
+                    String imagePath = ""+readerCard["Path_Img"];*/
                     
-                    Card card = new Card(int.Parse(carteId),name,valueTop,valueLeft,valueRight,valueBottom,level,imagePath);
+                    //Card card = new Card(int.Parse(carteId),name,valueTop,valueLeft,valueRight,valueBottom,level,imagePath);
+                    Card card = new Card(int.Parse(carteId));
                     addCard(card);
                 }
 
