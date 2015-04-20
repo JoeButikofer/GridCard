@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,7 +21,29 @@ namespace GridCartes
         private Card selectedCard;
         private Case[,] tabCase;
 
+        //Network things
+        private string opponentAddress;
+        private TcpClient tcpClient;
+        private TcpListener tcpListener;
+        private Form waitingForm;
+        private bool isServer;
+
         public GameBoard(Player p)
+        {
+            this.isServer = true;
+
+            baseConstructor(p);
+
+            waitingForm = new WaitingScreen();
+            waitingForm.Show();
+            tcpListener = new TcpListener(IPAddress.Loopback, 8013);
+            tcpListener.Start();
+            Task task = ReadAsync();
+            waitingForm.Show();
+            this.Text = "GridCards - SERVER";
+        }
+
+        private void baseConstructor(Player p)
         {
             InitializeComponent();
             tabCase = new Case[4,4];
@@ -37,17 +61,19 @@ namespace GridCartes
                 }
             }
 
-
-            /*TextBox text = new TextBox();
-            text.Text = "test1";
-
-            Panel panel = new Panel();
-            panel.BackColor = Color.Yellow;
-
-            tableLayoutPanel1.Controls.Add(panel, 0, 1);
-            tableLayoutPanel1.Controls.Add(text, 1, 0);*/
-
             fillHandCards();
+        }
+
+        //When we are the server, wait for the other player (client)
+        private async Task HandleConnectionsAsync()
+        {
+            Console.WriteLine("Waiting for async connection...");
+            Task<TcpClient> acceptClient = this.tcpListener.AcceptTcpClientAsync();
+            this.tcpClient = await acceptClient;
+            this.opponentAddress = ((IPEndPoint)tcpClient.Client.RemoteEndPoint).Address.ToString();
+            Console.WriteLine(this.opponentAddress + " has just connected");
+            waitingForm.Hide();
+            this.Show();
         }
 
 
@@ -91,22 +117,21 @@ namespace GridCartes
 
                 tabCase[x, y].placeCard(selectedCard, 1);
 
-                
                 if (x != 0)
                 {
-                    tabCase[x - 1, y].fight(tabCase[x, y].Card, Direction.LEFT);
+                    tabCase[x - 1, y].fight(tabCase[x, y].Card, Direction.LEFT, 1);
                 }
                 else if (x != 3)
                 {
-                    tabCase[x + 1, y].fight(tabCase[x, y].Card, Direction.RIGHT);
+                    tabCase[x + 1, y].fight(tabCase[x, y].Card, Direction.RIGHT, 1);
                 }
                 if (y != 0)
                 {
-                    tabCase[x, y - 1].fight(tabCase[x, y].Card, Direction.UP);
+                    tabCase[x, y - 1].fight(tabCase[x, y].Card, Direction.UP, 1);
                 }
                 else if (y != 3)
                 {
-                    tabCase[x, y + 1].fight(tabCase[x, y].Card, Direction.DOWN);
+                    tabCase[x, y + 1].fight(tabCase[x, y].Card, Direction.DOWN, 1);
                 }
 
 
@@ -130,6 +155,8 @@ namespace GridCartes
                 fillHandCards();
                 selectedCard = null;
             }
+
+            this.
           
 
         }
