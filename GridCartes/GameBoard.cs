@@ -17,6 +17,7 @@ namespace GridCartes
 
     public partial class GameBoard : Form
     {
+        private const bool DEBUGMESSAGE = true; //for display tcp message in chat box
         private Player player;
         private Deck currentDeck;
         private Card selectedCard;
@@ -106,7 +107,7 @@ namespace GridCartes
                     isBlockPowerSelected = false;
                     updatePowerButtons();
                     blockCard(x, y);
-                    sendMessage("POWER/" + x + "/" + y + "/" + 1);
+                    sendMessage("POWER/" + x + "/" + y + "/" + 1 + "/");
                 }
                 else if (isDestroyPowerSelected && !isPowerUsed)
                 {
@@ -117,7 +118,7 @@ namespace GridCartes
                         isBlockPowerSelected = false;
                         updatePowerButtons();
                         destroyCard(x, y);
-                        sendMessage("POWER/" + x + "/" + y + "/" + 2);
+                        sendMessage("POWER/" + x + "/" + y + "/" + 2 + "/");
                     }
                 }
                 else if (selectedCard != null)
@@ -127,7 +128,7 @@ namespace GridCartes
                         changeTurn(false);
                         placeCard(x, y, 1, selectedCard);
 
-                        sendMessage("CARD/" + x + "/" + y + "/" + selectedCard.Id);
+                        sendMessage("CARD/" + x + "/" + y + "/" + selectedCard.Id + "/");
 
                         currentDeck.removeCard(selectedCard);
                         fillHandCards();
@@ -282,8 +283,8 @@ namespace GridCartes
                 }
             }
 
-            lblMyScore.Text = "My score : " + myScore;
-            lblHisScore.Text = "His score : " + hisScore;
+            lblMyScore.Text = "Mon score : " + myScore;
+            lblHisScore.Text = "Son score : " + hisScore;
         }
 
         private void changeTurn(bool isMyTurn)
@@ -291,22 +292,29 @@ namespace GridCartes
             myTurn = isMyTurn;
             if (isMyTurn)
             {
-                lblTurn.Text = "My turn";
+                lblTurn.Text = "Mon tour";
                 lblTurn.ForeColor = Color.Blue;
             }
             else
             {
-                lblTurn.Text = "His turn";
+                lblTurn.Text = "Son tour";
                 lblTurn.ForeColor = Color.Red;
             }
         }
 
         //Send message to the opponent
         //Format :
-        // ACTION/CaseX/CaseY/parameters
-        // ACTION : CARD (play a card) or POWER (use a power)
-        // CaseX, CaseY : x and y coordinates in grid
-        // parameter : card id for action CARD or power id for action POWER
+        // For game command : 
+        //  ACTION/CaseX/CaseY/parameters/
+        //  ACTION : CARD (play a card) or POWER (use a power)
+        //  CaseX, CaseY : x and y coordinates in grid
+        //  parameter : card id for action CARD or power id for action POWER
+        // For chat :
+        //  CHAT/content/
+        //  CHAT : for indicating it's a chat message
+        //  content : content of the message
+        // NOTE :We need the last '/' because is used for terminating the message and help to preventing error
+        // causing by additionnal characters in the end of the message 
         private void sendMessage(String message)
         {
             if (message.Length > 0)
@@ -315,6 +323,7 @@ namespace GridCartes
 
                 byte[] byteMessage = Encoding.UTF8.GetBytes(message);
                 Console.WriteLine("Send : " + message);
+                if(DEBUGMESSAGE == true) listBoxChat.Items.Add("Send : " + message);
                 stream.Write(byteMessage, 0, byteMessage.Length);
             }
         }
@@ -324,32 +333,43 @@ namespace GridCartes
         {
             String[] elements = message.Split('/');
             String action = elements[0];
-            int caseX = int.Parse(elements[1]);
-            int caseY = int.Parse(elements[2]);
-            int parameter = int.Parse(elements[3]);
-            
-            if(action == "CARD")
+
+            if (DEBUGMESSAGE == true)
             {
-                Card card = new Card(parameter);
-                placeCard(caseX, caseY, 2, card);
-                changeTurn(true);
+                listBoxChat.Items.Add("Received : " + message);
             }
-            else if(action == "POWER")
+
+            if (action == "CHAT")
             {
-                switch(parameter)
-                {
-                    case 1 :
-                        blockCard(caseX, caseY);
-                        break;
-                    case 2 :
-                        destroyCard(caseX, caseY);
-                        break;
-                }
-                changeTurn(true);
+                String content = elements[1];
+                listBoxChat.Items.Add("Lui : " + content);
             }
             else
             {
-                //TODO envoi de message, tchat ?
+                int caseX = int.Parse(elements[1]);
+                int caseY = int.Parse(elements[2]);
+                int parameter = int.Parse(elements[3]);
+
+
+                if (action == "CARD")
+                {
+                    Card card = new Card(parameter);
+                    placeCard(caseX, caseY, 2, card);
+                    changeTurn(true);
+                }
+                else if (action == "POWER")
+                {
+                    switch (parameter)
+                    {
+                        case 1:
+                            blockCard(caseX, caseY);
+                            break;
+                        case 2:
+                            destroyCard(caseX, caseY);
+                            break;
+                    }
+                    changeTurn(true);
+                }
             }
         }
 
@@ -411,6 +431,13 @@ namespace GridCartes
                 btnBlock.Enabled = false;
                 btnDestroy.Enabled = false;
             }
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            listBoxChat.Items.Add("Moi : " + textBoxChat.Text);
+            sendMessage("CHAT/" + textBoxChat.Text + "/");
+            textBoxChat.Clear();
         }
     }
 }

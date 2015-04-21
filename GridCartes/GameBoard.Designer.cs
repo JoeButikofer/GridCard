@@ -31,12 +31,17 @@
             this.tableLayoutGame = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listViewHandCards = new System.Windows.Forms.ListView();
-            this.lblMyScore = new System.Windows.Forms.Label();
-            this.lblHisScore = new System.Windows.Forms.Label();
             this.lblTurn = new System.Windows.Forms.Label();
             this.btnBlock = new System.Windows.Forms.Button();
             this.btnDestroy = new System.Windows.Forms.Button();
+            this.lblMyScore = new System.Windows.Forms.Label();
+            this.lblHisScore = new System.Windows.Forms.Label();
+            this.listBoxChat = new System.Windows.Forms.ListBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBoxChat = new System.Windows.Forms.TextBox();
+            this.btnSend = new System.Windows.Forms.Button();
             this.tableLayoutGame.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutGame
@@ -52,6 +57,7 @@
             this.tableLayoutGame.Controls.Add(this.btnDestroy, 2, 2);
             this.tableLayoutGame.Controls.Add(this.lblMyScore, 0, 0);
             this.tableLayoutGame.Controls.Add(this.lblHisScore, 2, 0);
+            this.tableLayoutGame.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutGame.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutGame.Name = "tableLayoutGame";
@@ -94,24 +100,6 @@
             this.listViewHandCards.UseCompatibleStateImageBehavior = false;
             this.listViewHandCards.ItemActivate += new System.EventHandler(this.listViewHandCards_ItemActivate);
             // 
-            // lblMyScore
-            // 
-            this.lblMyScore.AutoSize = true;
-            this.lblMyScore.Location = new System.Drawing.Point(3, 0);
-            this.lblMyScore.Name = "lblMyScore";
-            this.lblMyScore.Size = new System.Drawing.Size(65, 13);
-            this.lblMyScore.TabIndex = 2;
-            this.lblMyScore.Text = "My score : 0";
-            // 
-            // lblHisScore
-            // 
-            this.lblHisScore.AutoSize = true;
-            this.lblHisScore.Location = new System.Drawing.Point(555, 0);
-            this.lblHisScore.Name = "lblHisScore";
-            this.lblHisScore.Size = new System.Drawing.Size(66, 13);
-            this.lblHisScore.TabIndex = 3;
-            this.lblHisScore.Text = "His score : 0";
-            // 
             // lblTurn
             // 
             this.lblTurn.AutoSize = true;
@@ -120,7 +108,7 @@
             this.lblTurn.Name = "lblTurn";
             this.lblTurn.Size = new System.Drawing.Size(29, 13);
             this.lblTurn.TabIndex = 4;
-            this.lblTurn.Text = "Turn";
+            this.lblTurn.Text = "Tour";
             // 
             // btnBlock
             // 
@@ -142,6 +130,61 @@
             this.btnDestroy.UseVisualStyleBackColor = true;
             this.btnDestroy.Click += new System.EventHandler(this.btnDestroy_Click);
             // 
+            // lblMyScore
+            // 
+            this.lblMyScore.AutoSize = true;
+            this.lblMyScore.Location = new System.Drawing.Point(3, 0);
+            this.lblMyScore.Name = "lblMyScore";
+            this.lblMyScore.Size = new System.Drawing.Size(72, 13);
+            this.lblMyScore.TabIndex = 2;
+            this.lblMyScore.Text = "Mon score : 0";
+            // 
+            // lblHisScore
+            // 
+            this.lblHisScore.AutoSize = true;
+            this.lblHisScore.Location = new System.Drawing.Point(555, 0);
+            this.lblHisScore.Name = "lblHisScore";
+            this.lblHisScore.Size = new System.Drawing.Size(70, 13);
+            this.lblHisScore.TabIndex = 3;
+            this.lblHisScore.Text = "Son score : 0";
+            // 
+            // listBoxChat
+            // 
+            this.listBoxChat.FormattingEnabled = true;
+            this.listBoxChat.Location = new System.Drawing.Point(3, 3);
+            this.listBoxChat.Name = "listBoxChat";
+            this.listBoxChat.Size = new System.Drawing.Size(132, 212);
+            this.listBoxChat.TabIndex = 7;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.listBoxChat);
+            this.flowLayoutPanel1.Controls.Add(this.textBoxChat);
+            this.flowLayoutPanel1.Controls.Add(this.btnSend);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 51);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(132, 287);
+            this.flowLayoutPanel1.TabIndex = 8;
+            // 
+            // textBoxChat
+            // 
+            this.textBoxChat.Location = new System.Drawing.Point(3, 221);
+            this.textBoxChat.MaxLength = 200;
+            this.textBoxChat.Name = "textBoxChat";
+            this.textBoxChat.Size = new System.Drawing.Size(129, 20);
+            this.textBoxChat.TabIndex = 8;
+            this.textBoxChat.Text = "Message...";
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(3, 247);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 9;
+            this.btnSend.Text = "Envoyer";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
             // GameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +196,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameBoard_FormClosed);
             this.tableLayoutGame.ResumeLayout(false);
             this.tableLayoutGame.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -167,5 +212,9 @@
         private System.Windows.Forms.Label lblTurn;
         private System.Windows.Forms.Button btnBlock;
         private System.Windows.Forms.Button btnDestroy;
+        private System.Windows.Forms.ListBox listBoxChat;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox textBoxChat;
+        private System.Windows.Forms.Button btnSend;
     }
 }
