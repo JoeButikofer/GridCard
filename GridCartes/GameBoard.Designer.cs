@@ -34,6 +34,8 @@
             this.lblMyScore = new System.Windows.Forms.Label();
             this.lblHisScore = new System.Windows.Forms.Label();
             this.lblTurn = new System.Windows.Forms.Label();
+            this.btnBlock = new System.Windows.Forms.Button();
+            this.btnDestroy = new System.Windows.Forms.Button();
             this.tableLayoutGame.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,9 +47,11 @@
             this.tableLayoutGame.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutGame.Controls.Add(this.tableLayoutPanel1, 1, 1);
             this.tableLayoutGame.Controls.Add(this.listViewHandCards, 1, 2);
-            this.tableLayoutGame.Controls.Add(this.lblMyScore, 0, 1);
-            this.tableLayoutGame.Controls.Add(this.lblHisScore, 2, 1);
             this.tableLayoutGame.Controls.Add(this.lblTurn, 1, 0);
+            this.tableLayoutGame.Controls.Add(this.btnBlock, 0, 2);
+            this.tableLayoutGame.Controls.Add(this.btnDestroy, 2, 2);
+            this.tableLayoutGame.Controls.Add(this.lblMyScore, 0, 0);
+            this.tableLayoutGame.Controls.Add(this.lblHisScore, 2, 0);
             this.tableLayoutGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutGame.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutGame.Name = "tableLayoutGame";
@@ -79,7 +83,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(408, 287);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tableLayoutPanel1_MouseClick);
             // 
             // listViewHandCards
             // 
@@ -94,7 +97,7 @@
             // lblMyScore
             // 
             this.lblMyScore.AutoSize = true;
-            this.lblMyScore.Location = new System.Drawing.Point(3, 48);
+            this.lblMyScore.Location = new System.Drawing.Point(3, 0);
             this.lblMyScore.Name = "lblMyScore";
             this.lblMyScore.Size = new System.Drawing.Size(65, 13);
             this.lblMyScore.TabIndex = 2;
@@ -103,7 +106,7 @@
             // lblHisScore
             // 
             this.lblHisScore.AutoSize = true;
-            this.lblHisScore.Location = new System.Drawing.Point(555, 48);
+            this.lblHisScore.Location = new System.Drawing.Point(555, 0);
             this.lblHisScore.Name = "lblHisScore";
             this.lblHisScore.Size = new System.Drawing.Size(66, 13);
             this.lblHisScore.TabIndex = 3;
@@ -118,6 +121,26 @@
             this.lblTurn.Size = new System.Drawing.Size(29, 13);
             this.lblTurn.TabIndex = 4;
             this.lblTurn.Text = "Turn";
+            // 
+            // btnBlock
+            // 
+            this.btnBlock.Location = new System.Drawing.Point(3, 344);
+            this.btnBlock.Name = "btnBlock";
+            this.btnBlock.Size = new System.Drawing.Size(102, 23);
+            this.btnBlock.TabIndex = 5;
+            this.btnBlock.Text = "Bloque une case";
+            this.btnBlock.UseVisualStyleBackColor = true;
+            this.btnBlock.Click += new System.EventHandler(this.btnBlock_Click);
+            // 
+            // btnDestroy
+            // 
+            this.btnDestroy.Location = new System.Drawing.Point(555, 344);
+            this.btnDestroy.Name = "btnDestroy";
+            this.btnDestroy.Size = new System.Drawing.Size(102, 23);
+            this.btnDestroy.TabIndex = 6;
+            this.btnDestroy.Text = "Détruire une carte";
+            this.btnDestroy.UseVisualStyleBackColor = true;
+            this.btnDestroy.Click += new System.EventHandler(this.btnDestroy_Click);
             // 
             // GameBoard
             // 
@@ -142,5 +165,7 @@
         private System.Windows.Forms.Label lblMyScore;
         private System.Windows.Forms.Label lblHisScore;
         private System.Windows.Forms.Label lblTurn;
+        private System.Windows.Forms.Button btnBlock;
+        private System.Windows.Forms.Button btnDestroy;
     }
 }

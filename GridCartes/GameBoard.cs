@@ -23,6 +23,11 @@ namespace GridCartes
         private Case[,] tabCase;
         private bool myTurn;
 
+        //Power button management
+        private bool isBlockPowerSelected;
+        private bool isDestroyPowerSelected;
+        private bool isPowerUsed;
+
         //Network things
         private string opponentAddress;
         private TcpClient tcpClient;
@@ -68,6 +73,9 @@ namespace GridCartes
             tabCase = new Case[4,4];
             player = p;
             currentDeck = player.CurrentDeck;
+            isBlockPowerSelected = false;
+            isDestroyPowerSelected = false;
+            isPowerUsed = false;
 
             int width = (int)(tableLayoutPanel1.Size.Width / 4);
             int height = (int)(tableLayoutPanel1.Size.Height / 4);
@@ -76,11 +84,57 @@ namespace GridCartes
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    tabCase[i, j] = new Case(i,j,width-4,height-4);
+                    tabCase[i, j] = new Case(i,j,width-4,height-4, caseClick);
+                    tableLayoutPanel1.Controls.Add(tabCase[i, j], i, j);
                 }
             }
-
             fillHandCards();
+        }
+        
+        //Method call from one of the panel when clicked
+        private void caseClick(object sender, CaseClickEventArgs e)
+        {
+            if (myTurn)
+            {
+                int x = e.x;
+                int y = e.y;
+
+                if (isBlockPowerSelected && !isPowerUsed)
+                {
+                    changeTurn(false);
+                    isPowerUsed = true;
+                    isBlockPowerSelected = false;
+                    updatePowerButtons();
+                    blockCard(x, y);
+                    sendMessage("POWER/" + x + "/" + y + "/" + 1);
+                }
+                else if (isDestroyPowerSelected && !isPowerUsed)
+                {
+                    if (!tabCase[x, y].isEmpty())
+                    {
+                        changeTurn(false);
+                        isPowerUsed = true;
+                        isBlockPowerSelected = false;
+                        updatePowerButtons();
+                        destroyCard(x, y);
+                        sendMessage("POWER/" + x + "/" + y + "/" + 2);
+                    }
+                }
+                else if (selectedCard != null)
+                {
+                    if (!tabCase[x, y].IsBlocked)
+                    {
+                        changeTurn(false);
+                        placeCard(x, y, 1, selectedCard);
+
+                        sendMessage("CARD/" + x + "/" + y + "/" + selectedCard.Id);
+
+                        currentDeck.removeCard(selectedCard);
+                        fillHandCards();
+                        selectedCard = null;
+                    }
+                }
+            }
         }
 
         //When we are the server, wait for the other player (client)
@@ -119,14 +173,11 @@ namespace GridCartes
 
             while (true)
             {
-                Console.WriteLine("Before reading");
                 int bytesRead = await ns.ReadAsync(buffer, 0, buffer.Length);
-                Console.WriteLine("After reading");
                 if (bytesRead <= 0)
                     break;
                 String message = Encoding.UTF8.GetString(buffer);
                 parseMessage(message);
-                //listBox_Messages.Items.Add(this.opponentAddress + " : " + message);
                 Console.WriteLine("Receive : " + message);
             }
         }
@@ -152,32 +203,6 @@ namespace GridCartes
             string s = listViewHandCards.Items[i].Text;
 
             selectedCard = currentDeck.ListCard.ElementAt(i);
-
-        }
-
-        private void tableLayoutPanel1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if(selectedCard!=null && myTurn)
-            {
-                int width = (int)(tableLayoutPanel1.Size.Width / 4);
-                int height = (int)(tableLayoutPanel1.Size.Height / 4);
-
-
-                int resteX = e.X % width;
-                int resteY = e.Y % height;
-
-                int x = (e.X - resteX) / width;
-                int y = (e.Y - resteY) / height;
-
-                changeTurn(false);
-                placeCard(x, y, 1, selectedCard);
-                
-                sendMessage("CARD/" + x + "/" + y + "/" + selectedCard.Id);
-
-                currentDeck.removeCard(selectedCard);
-                fillHandCards();
-                selectedCard = null;
-            }
 
         }
 
@@ -220,9 +245,21 @@ namespace GridCartes
                 tabCase[x, 0].fight(tabCase[x, y].Card, Direction.DOWN, player);
             }
 
-            tableLayoutPanel1.Controls.Add(tabCase[x, y], x, y);
-
+            tableLayoutPanel1.Refresh();
             updateScore();
+        }
+
+        private void destroyCard(int x, int y)
+        {
+            tabCase[x, y].destroy();
+            tableLayoutPanel1.Refresh();
+            updateScore();
+        }
+
+        private void blockCard(int x, int y)
+        {
+            tabCase[x, y].IsBlocked = true;
+            tableLayoutPanel1.Refresh();
         }
 
         private void updateScore()
@@ -299,7 +336,16 @@ namespace GridCartes
             }
             else if(action == "POWER")
             {
-                //TODO
+                switch(parameter)
+                {
+                    case 1 :
+                        blockCard(caseX, caseY);
+                        break;
+                    case 2 :
+                        destroyCard(caseX, caseY);
+                        break;
+                }
+                changeTurn(true);
             }
             else
             {
@@ -322,5 +368,49 @@ namespace GridCartes
             System.Windows.Forms.Application.Exit();
         }
 
+        private void btnBlock_Click(object sender, EventArgs e)
+        {
+            isDestroyPowerSelected = false;
+            isBlockPowerSelected = !isBlockPowerSelected;
+            updatePowerButtons();
+        }
+
+        private void btnDestroy_Click(object sender, EventArgs e)
+        {
+            isBlockPowerSelected = false;
+            isDestroyPowerSelected = !isDestroyPowerSelected;
+            updatePowerButtons();
+        }
+
+        private void updatePowerButtons()
+        {
+            if (!isPowerUsed)
+            {
+                if (isDestroyPowerSelected)
+                {
+                    btnDestroy.Text = "Sélectionnez une carte...";
+                }
+                else
+                {
+                    btnDestroy.Text = "Détruire une carte";
+                }
+
+                if (isBlockPowerSelected)
+                {
+                    btnBlock.Text = "Sélectionnez une case...";
+                }
+                else
+                {
+                    btnBlock.Text = "Bloque une case";
+                }
+            }
+            else
+            {
+                btnBlock.Text = "Plus de pouvoir disponible";
+                btnDestroy.Text = "Plus de pouvoir disponible";
+                btnBlock.Enabled = false;
+                btnDestroy.Enabled = false;
+            }
+        }
     }
 }
