@@ -17,12 +17,14 @@ namespace GridCartes
 
     public partial class GameBoard : Form
     {
-        private const bool DEBUGMESSAGE = true; //for display tcp message in chat box
+        private const bool DEBUGMESSAGE = false; //for display tcp message in chat box
         private Player player;
         private Deck currentDeck;
         private Card selectedCard;
         private Case[,] tabCase;
         private bool myTurn;
+        private int myScore;
+        private int hisScore;
 
         //Power button management
         private bool isBlockPowerSelected;
@@ -77,6 +79,8 @@ namespace GridCartes
             isBlockPowerSelected = false;
             isDestroyPowerSelected = false;
             isPowerUsed = false;
+            myScore = 0;
+            hisScore = 0;
 
             int width = (int)(tableLayoutPanel1.Size.Width / 4);
             int height = (int)(tableLayoutPanel1.Size.Height / 4);
@@ -108,6 +112,7 @@ namespace GridCartes
                     updatePowerButtons();
                     blockCard(x, y);
                     sendMessage("POWER/" + x + "/" + y + "/" + 1 + "/");
+                    checkGameOver();
                 }
                 else if (isDestroyPowerSelected && !isPowerUsed)
                 {
@@ -119,6 +124,7 @@ namespace GridCartes
                         updatePowerButtons();
                         destroyCard(x, y);
                         sendMessage("POWER/" + x + "/" + y + "/" + 2 + "/");
+                        checkGameOver();
                     }
                 }
                 else if (selectedCard != null)
@@ -133,6 +139,7 @@ namespace GridCartes
                         currentDeck.removeCard(selectedCard);
                         fillHandCards();
                         selectedCard = null;
+                        checkGameOver();
                     }
                 }
             }
@@ -265,8 +272,8 @@ namespace GridCartes
 
         private void updateScore()
         {
-            int myScore = 0;
-            int hisScore = 0;
+            myScore = 0;
+            hisScore = 0;
 
             for (int i = 0; i < 4; i++)
             {
@@ -355,7 +362,6 @@ namespace GridCartes
                 {
                     Card card = new Card(parameter);
                     placeCard(caseX, caseY, 2, card);
-                    changeTurn(true);
                 }
                 else if (action == "POWER")
                 {
@@ -368,10 +374,55 @@ namespace GridCartes
                             destroyCard(caseX, caseY);
                             break;
                     }
-                    changeTurn(true);
                 }
+                changeTurn(true);
+                checkGameOver();
             }
         }
+
+        private void checkGameOver()
+        {
+            bool isOver = true;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (tabCase[i, j].isEmpty() && !tabCase[i, j].IsBlocked)
+                    {
+                        isOver = false;
+                    }
+                }
+            }
+
+            if (isOver)
+            {
+                gameOver();
+            }
+        }
+
+        private void gameOver()
+        {
+            closeConnections();
+
+            //TODO redirection écran
+            if(myScore > hisScore)
+            {
+                //Victory !!!
+                MessageBox.Show("Victoire!!!");
+            }
+            else if( myScore < hisScore)
+            {
+                //Defeat...
+                MessageBox.Show("Défaite...");
+            }
+            else
+            {
+                //Draw
+                MessageBox.Show("Egalite");
+            }
+            
+        }
+
 
         private void closeConnections()
         {
@@ -386,6 +437,16 @@ namespace GridCartes
             //Finish the application
             closeConnections();
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            if (textBoxChat.Text.Length > 0)
+            {
+                listBoxChat.Items.Add("Moi : " + textBoxChat.Text);
+                sendMessage("CHAT/" + textBoxChat.Text + "/");
+                textBoxChat.Clear();
+            }
         }
 
         private void btnBlock_Click(object sender, EventArgs e)
@@ -431,13 +492,6 @@ namespace GridCartes
                 btnBlock.Enabled = false;
                 btnDestroy.Enabled = false;
             }
-        }
-
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            listBoxChat.Items.Add("Moi : " + textBoxChat.Text);
-            sendMessage("CHAT/" + textBoxChat.Text + "/");
-            textBoxChat.Clear();
         }
     }
 }

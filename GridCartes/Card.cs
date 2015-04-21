@@ -60,26 +60,6 @@ namespace GridCartes
             get { return image; }
         }
 
-        private DatabaseHelper db;
-
-       /* public Card(int _id, String _name, int _valueTop, int _valueLeft, int _valueRight, int _valueBottom, int _level, String _imagePath)
-        {
-            id = _id;
-            name = _name;
-            valueTop = _valueTop;
-            valueLeft = _valueLeft;
-            valueRight = _valueRight;
-            valueBottom = _valueBottom;
-            level = _level;
-
-            String path = Path.Combine(
-        Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), _imagePath);
-
-            Image baseImage = Image.FromFile(path);
-
-            image = addValuesToImage(baseImage);
-        }*/
-
         public Card(int _id)
         {
             id = _id;

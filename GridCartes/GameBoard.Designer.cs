@@ -36,8 +36,8 @@
             this.btnDestroy = new System.Windows.Forms.Button();
             this.lblMyScore = new System.Windows.Forms.Label();
             this.lblHisScore = new System.Windows.Forms.Label();
-            this.listBoxChat = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.listBoxChat = new System.Windows.Forms.ListBox();
             this.textBoxChat = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.tableLayoutGame.SuspendLayout();
@@ -114,7 +114,7 @@
             // 
             this.btnBlock.Location = new System.Drawing.Point(3, 344);
             this.btnBlock.Name = "btnBlock";
-            this.btnBlock.Size = new System.Drawing.Size(102, 23);
+            this.btnBlock.Size = new System.Drawing.Size(132, 23);
             this.btnBlock.TabIndex = 5;
             this.btnBlock.Text = "Bloque une case";
             this.btnBlock.UseVisualStyleBackColor = true;
@@ -124,7 +124,7 @@
             // 
             this.btnDestroy.Location = new System.Drawing.Point(555, 344);
             this.btnDestroy.Name = "btnDestroy";
-            this.btnDestroy.Size = new System.Drawing.Size(102, 23);
+            this.btnDestroy.Size = new System.Drawing.Size(132, 23);
             this.btnDestroy.TabIndex = 6;
             this.btnDestroy.Text = "Détruire une carte";
             this.btnDestroy.UseVisualStyleBackColor = true;
@@ -148,14 +148,6 @@
             this.lblHisScore.TabIndex = 3;
             this.lblHisScore.Text = "Son score : 0";
             // 
-            // listBoxChat
-            // 
-            this.listBoxChat.FormattingEnabled = true;
-            this.listBoxChat.Location = new System.Drawing.Point(3, 3);
-            this.listBoxChat.Name = "listBoxChat";
-            this.listBoxChat.Size = new System.Drawing.Size(132, 212);
-            this.listBoxChat.TabIndex = 7;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.listBoxChat);
@@ -165,6 +157,14 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(132, 287);
             this.flowLayoutPanel1.TabIndex = 8;
+            // 
+            // listBoxChat
+            // 
+            this.listBoxChat.FormattingEnabled = true;
+            this.listBoxChat.Location = new System.Drawing.Point(3, 3);
+            this.listBoxChat.Name = "listBoxChat";
+            this.listBoxChat.Size = new System.Drawing.Size(132, 212);
+            this.listBoxChat.TabIndex = 7;
             // 
             // textBoxChat
             // 
