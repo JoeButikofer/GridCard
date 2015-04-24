@@ -86,6 +86,21 @@ namespace GridCartes
             image = addValuesToImage(baseImage);
         }
 
+        public static List<Card> getAllCards()
+        {
+            List<Card> listCards = new List<Card>();
+
+            DatabaseHelper db = DatabaseHelper.Instance;
+            SQLiteDataReader reader = db.execCommandeReader("select * from Cartes;");
+
+            while (reader.Read())
+            {
+                listCards.Add(new Card(int.Parse(""+reader["ID"])));
+            }
+
+            return listCards;
+        }
+
         //Add damage value to the base image of the card, so we don't have to modify the image every time we chnage the values
         private Image addValuesToImage(Image img)
         {

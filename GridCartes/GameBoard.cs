@@ -408,17 +408,20 @@ namespace GridCartes
             if(myScore > hisScore)
             {
                 //Victory !!!
-                MessageBox.Show("Victoire!!!");
+                (new VictoryScreen(player)).Show();
+                this.Hide();
             }
             else if( myScore < hisScore)
             {
                 //Defeat...
-                MessageBox.Show("Défaite...");
+                (new DefeatScreen(player)).Show();
+                this.Hide();
             }
             else
             {
                 //Draw
-                MessageBox.Show("Egalite");
+                (new DrawScreen(player)).Show();
+                this.Hide();
             }
             
         }
