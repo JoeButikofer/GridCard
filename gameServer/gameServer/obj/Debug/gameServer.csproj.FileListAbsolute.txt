@@ -1,0 +1,12 @@
+D:\HE-ARC\NET\Projet\gameServer\gameServer\bin\Debug\gameServer.exe.config
+D:\HE-ARC\NET\Projet\gameServer\gameServer\bin\Debug\gameServer.exe
+D:\HE-ARC\NET\Projet\gameServer\gameServer\bin\Debug\gameServer.pdb
+D:\HE-ARC\NET\Projet\gameServer\gameServer\obj\Debug\gameServer.Form1.resources
+D:\HE-ARC\NET\Projet\gameServer\gameServer\obj\Debug\gameServer.Properties.Resources.resources
+D:\HE-ARC\NET\Projet\gameServer\gameServer\obj\Debug\gameServer.csproj.GenerateResource.Cache
+D:\HE-ARC\NET\Projet\gameServer\gameServer\obj\Debug\gameServer.exe
+D:\HE-ARC\NET\Projet\gameServer\gameServer\obj\Debug\gameServer.pdb
+D:\HE-ARC\NET\Projet\gameServer\gameServer\obj\Debug\gameServer.csprojResolveAssemblyReference.cache
+D:\HE-ARC\NET\GridCard\gameServer\gameServer\bin\Debug\gameServer.exe.config
+D:\HE-ARC\NET\GridCard\gameServer\gameServer\obj\Debug\gameServer.exe
+D:\HE-ARC\NET\GridCard\gameServer\gameServer\obj\Debug\gameServer.pdb
