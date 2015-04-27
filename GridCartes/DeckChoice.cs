@@ -60,8 +60,8 @@ namespace GridCartes
 
         private void connectToServer()
         {
-            try
-            {
+           // try
+            //{
                 //TODO changer adresse 
                 //TcpClient tcpClient = new TcpClient(IPAddress.Loopback.ToString(), 8012);
                 TcpClient tcpClient = new TcpClient(serverAddress.ToString(), 8012);
@@ -101,11 +101,11 @@ namespace GridCartes
                 {
                     MessageBox.Show("Invalid response from server");
                 }
-            }
+           /* }
             catch (SocketException e)
             {
                 MessageBox.Show("Connexion au serveur impossible, vérifier votre connexion internet et réessayer", "Erreur réseau");
-            }
+            }*/
         }
 
         private void btnBack_Click(object sender, EventArgs e)
