@@ -131,6 +131,9 @@ namespace GridCartes
                 case DeckStatus.DeckTooShort:
                      MessageBox.Show("Le deck ne contient pas assez de cartes, il doit contenir au minimum 10 cartes");
                     break;
+                case DeckStatus.TooMuchCardUsed:
+                    MessageBox.Show("Le deck contient trop de cartes semblables, le maximum est 2");
+                    break;
                 default:
                     MessageBox.Show("Erreur inconnue");
                     break;
