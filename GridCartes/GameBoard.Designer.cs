@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutGame = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listViewHandCards = new System.Windows.Forms.ListView();
             this.lblTurn = new System.Windows.Forms.Label();
             this.btnBlock = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@
             this.listBoxChat = new System.Windows.Forms.ListBox();
             this.textBoxChat = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutGame.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +50,6 @@
             this.tableLayoutGame.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutGame.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutGame.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutGame.Controls.Add(this.tableLayoutPanel1, 1, 1);
             this.tableLayoutGame.Controls.Add(this.listViewHandCards, 1, 2);
             this.tableLayoutGame.Controls.Add(this.lblTurn, 1, 0);
             this.tableLayoutGame.Controls.Add(this.btnBlock, 0, 2);
@@ -58,42 +57,24 @@
             this.tableLayoutGame.Controls.Add(this.lblMyScore, 0, 0);
             this.tableLayoutGame.Controls.Add(this.lblHisScore, 2, 0);
             this.tableLayoutGame.Controls.Add(this.flowLayoutPanel1, 0, 1);
+            this.tableLayoutGame.Controls.Add(this.tableLayoutPanel1, 1, 1);
             this.tableLayoutGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutGame.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutGame.Name = "tableLayoutGame";
             this.tableLayoutGame.RowCount = 3;
             this.tableLayoutGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.80645F));
+            this.tableLayoutGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.35484F));
             this.tableLayoutGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutGame.Size = new System.Drawing.Size(690, 489);
+            this.tableLayoutGame.Size = new System.Drawing.Size(822, 620);
             this.tableLayoutGame.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(141, 51);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(408, 287);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // listViewHandCards
             // 
             this.listViewHandCards.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listViewHandCards.Location = new System.Drawing.Point(141, 344);
+            this.listViewHandCards.Location = new System.Drawing.Point(167, 471);
             this.listViewHandCards.Name = "listViewHandCards";
             this.listViewHandCards.Size = new System.Drawing.Size(408, 142);
             this.listViewHandCards.TabIndex = 1;
@@ -104,7 +85,7 @@
             // 
             this.lblTurn.AutoSize = true;
             this.lblTurn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTurn.Location = new System.Drawing.Point(141, 0);
+            this.lblTurn.Location = new System.Drawing.Point(167, 0);
             this.lblTurn.Name = "lblTurn";
             this.lblTurn.Size = new System.Drawing.Size(29, 13);
             this.lblTurn.TabIndex = 4;
@@ -112,7 +93,7 @@
             // 
             // btnBlock
             // 
-            this.btnBlock.Location = new System.Drawing.Point(3, 344);
+            this.btnBlock.Location = new System.Drawing.Point(3, 471);
             this.btnBlock.Name = "btnBlock";
             this.btnBlock.Size = new System.Drawing.Size(132, 23);
             this.btnBlock.TabIndex = 5;
@@ -122,7 +103,7 @@
             // 
             // btnDestroy
             // 
-            this.btnDestroy.Location = new System.Drawing.Point(555, 344);
+            this.btnDestroy.Location = new System.Drawing.Point(660, 471);
             this.btnDestroy.Name = "btnDestroy";
             this.btnDestroy.Size = new System.Drawing.Size(132, 23);
             this.btnDestroy.TabIndex = 6;
@@ -142,7 +123,7 @@
             // lblHisScore
             // 
             this.lblHisScore.AutoSize = true;
-            this.lblHisScore.Location = new System.Drawing.Point(555, 0);
+            this.lblHisScore.Location = new System.Drawing.Point(660, 0);
             this.lblHisScore.Name = "lblHisScore";
             this.lblHisScore.Size = new System.Drawing.Size(70, 13);
             this.lblHisScore.TabIndex = 3;
@@ -153,7 +134,7 @@
             this.flowLayoutPanel1.Controls.Add(this.listBoxChat);
             this.flowLayoutPanel1.Controls.Add(this.textBoxChat);
             this.flowLayoutPanel1.Controls.Add(this.btnSend);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 51);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 64);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(132, 287);
             this.flowLayoutPanel1.TabIndex = 8;
@@ -185,11 +166,30 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(264, 64);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(100, 3, 3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(280, 400);
+            this.tableLayoutPanel1.TabIndex = 9;
+            // 
             // GameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 489);
+            this.ClientSize = new System.Drawing.Size(822, 620);
             this.Controls.Add(this.tableLayoutGame);
             this.Name = "GameBoard";
             this.Text = "GameBoard";
@@ -205,7 +205,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutGame;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListView listViewHandCards;
         private System.Windows.Forms.Label lblMyScore;
         private System.Windows.Forms.Label lblHisScore;
@@ -216,5 +215,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox textBoxChat;
         private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
