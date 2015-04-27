@@ -27,7 +27,9 @@ namespace gameServer
             this.started = false;
             //FIFO
             this.listWaitingClient = new Queue<String>();
-            tcpListener = new TcpListener(IPAddress.Parse("157.26.111.104"), 8012);
+            //tcpListener = new TcpListener(IPAddress.Loopback, 8012);
+            //tcpListener = new TcpListener(IPAddress.Parse("157.26.111.106"), 8012);
+            tcpListener = new TcpListener(IPAddress.Any, 8012);
         }
 
         private void btn_Start_Click(object sender, EventArgs e)
@@ -84,7 +86,7 @@ namespace gameServer
                 message = listWaitingClient.Dequeue();
             }
             byte[] byteMessage = encode.GetBytes(message);
-            Console.WriteLine("Send : " + message + "To : " + address);
+            Console.WriteLine("Send : " + message + " To : " + address);
             stream.Write(byteMessage, 0, byteMessage.Length);
             stream.Close();
         }

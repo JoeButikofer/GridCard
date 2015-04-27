@@ -48,7 +48,8 @@ namespace GridCartes
 
             waitingForm = new WaitingScreen();
             waitingForm.Show();
-            tcpListener = new TcpListener(IPAddress.Loopback, 8013);
+            //tcpListener = new TcpListener(IPAddress.Loopback, 8013);
+            tcpListener = new TcpListener(IPAddress.Any, 8013);
             tcpListener.Start();
             Task task = ReadAsync();
             waitingForm.Show();
