@@ -14,13 +14,13 @@ using System.Windows.Forms;
 
 namespace gameServer
 {
-    public partial class Form1 : Form
+    public partial class GameServer : Form
     {
         private TcpListener tcpListener;
         private bool started;
         private Queue<String> listWaitingClient;
 
-        public Form1()
+        public GameServer()
         {
             InitializeComponent();
             this.btn_Stop.Enabled = false;

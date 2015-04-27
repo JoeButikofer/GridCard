@@ -192,6 +192,7 @@
             this.ClientSize = new System.Drawing.Size(822, 620);
             this.Controls.Add(this.tableLayoutGame);
             this.Name = "GameBoard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameBoard";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameBoard_FormClosed);
             this.tableLayoutGame.ResumeLayout(false);

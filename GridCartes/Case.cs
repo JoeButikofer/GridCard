@@ -161,7 +161,7 @@ namespace GridCartes
 
                 if(isBlocked)
                 {
-                    Pen pen = new Pen(color, 10);
+                    Pen pen = new Pen(color, 3);
                     graphics.DrawRectangle(pen, 0, 0, newBitmap.Width, newBitmap.Height);
                 }
 

@@ -110,7 +110,7 @@ namespace GridCartes
             }
             catch (SocketException e)
             {
-                MessageBox.Show("Connexion au serveur impossible, vérifier votre connexion internet et réessayer", "Erreur réseau");
+                MessageBox.Show("Connexion au serveur impossible, vérifier votre connexion internet et l'adresse du serveur", "Erreur réseau");
             }
         }
 
