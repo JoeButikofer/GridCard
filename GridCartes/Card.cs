@@ -75,7 +75,7 @@ namespace GridCartes
             valueLeft = int.Parse("" + reader["Value_Gauche"]);
             valueRight = int.Parse("" + reader["Value_Droite"]);
             valueBottom = int.Parse("" + reader["Value_Bas"]);
-            level = int.Parse("" + reader["Level"]);
+            level = 0;//int.Parse("" + reader["Level"]);
             String imagePath = "" + reader["Path_Img"];
 
             String path = Path.Combine(
