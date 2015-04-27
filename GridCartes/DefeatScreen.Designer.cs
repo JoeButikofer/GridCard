@@ -73,7 +73,7 @@
             this.Controls.Add(this.label1);
             this.Name = "DefeatScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DefeatingScreen";
+            this.Text = "Grid Cards";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DefeatScreen_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

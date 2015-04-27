@@ -97,7 +97,7 @@
             this.Controls.Add(this.label1);
             this.Name = "VictoryScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VictoryScreen";
+            this.Text = "Grid Cards";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VictoryScreen_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewCard)).EndInit();
             this.ResumeLayout(false);

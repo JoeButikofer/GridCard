@@ -84,7 +84,7 @@
             this.Controls.Add(this.btnCancel);
             this.Name = "InputTextForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InputTextForm";
+            this.Text = "Grid Cards";
             this.ResumeLayout(false);
             this.PerformLayout();
 

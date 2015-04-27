@@ -60,7 +60,7 @@
             this.Controls.Add(this.listBoxDeckChoice);
             this.Name = "DeckChoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DeckChoice";
+            this.Text = "Grid Cards";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DeckChoice_FormClosed);
             this.ResumeLayout(false);
 
