@@ -79,7 +79,6 @@ namespace GridCartes
         private void listViewCards_ItemActivate(object sender, EventArgs e)
         {
             int i = listViewCards.SelectedIndices[0];
-            string s = listViewCards.Items[i].Text;
 
             Card selectedCard = availableCards.ListCard.ElementAt(i);
 
@@ -142,13 +141,16 @@ namespace GridCartes
 
         private DeckStatus checkCardToDeckValidity(Card card)
         {
-            //TODO check niveau du deck, nombre de cartes, ....
+            //Check if we have a maximum of 2 same cards
+            int count = currentDeck.ListCard.Count(item => item.Name == card.Name);
+            if (count > 1) return DeckStatus.TooMuchCardUsed;
+
             return DeckStatus.OK;
         }
 
         private DeckStatus checkDeckValidity()
         {
-            //TODO check niveau du deck, nombre de cartes, ....
+            //TODO check niveau du deck
             return currentDeck.isValid();
         }
 

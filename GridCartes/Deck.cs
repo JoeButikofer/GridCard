@@ -120,6 +120,7 @@ namespace GridCartes
             }
         }
 
+        //Check the validity of the deck (number of cards, number of same cards)
         public DeckStatus isValid()
         {
             if (listCard.Count < 10)
@@ -131,7 +132,7 @@ namespace GridCartes
                 return DeckStatus.DeckTooLong;
             }
 
-            if(!checkNumberOfCard())
+            if(!checkNumberOfSameCards())
             {
                 return DeckStatus.TooMuchCardUsed;
             }
@@ -139,7 +140,8 @@ namespace GridCartes
             return DeckStatus.OK;
         }
 
-        private bool checkNumberOfCard()
+        //Check if we have a maximum of 2 same cards
+        private bool checkNumberOfSameCards()
         {
             foreach(Card card in listCard)
             {
