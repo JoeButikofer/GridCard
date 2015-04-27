@@ -10,3 +10,12 @@ D:\HE-ARC\NET\Projet\gameServer\gameServer\obj\Debug\gameServer.csprojResolveAss
 D:\HE-ARC\NET\GridCard\gameServer\gameServer\bin\Debug\gameServer.exe.config
 D:\HE-ARC\NET\GridCard\gameServer\gameServer\obj\Debug\gameServer.exe
 D:\HE-ARC\NET\GridCard\gameServer\gameServer\obj\Debug\gameServer.pdb
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\bin\Debug\gameServer.exe.config
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\bin\Debug\gameServer.exe
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\bin\Debug\gameServer.pdb
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\obj\Debug\gameServer.csprojResolveAssemblyReference.cache
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\obj\Debug\gameServer.Form1.resources
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\obj\Debug\gameServer.Properties.Resources.resources
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\obj\Debug\gameServer.csproj.GenerateResource.Cache
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\obj\Debug\gameServer.exe
+D:\Spike\Documents\Visual Studio 2013\Projects\GridCard\gameServer\gameServer\obj\Debug\gameServer.pdb
