@@ -19,12 +19,14 @@ namespace GridCartes
     {
         private Player player;
         private DatabaseHelper db;
+        private IPAddress serverAddress;
 
-        public DeckChoice(string name)
+        public DeckChoice(string name, IPAddress _serverAddress)
         {
             InitializeComponent();
             player = new Player(name);
             db = DatabaseHelper.Instance;
+            serverAddress = _serverAddress;
 
             initListBox();
         }
@@ -61,7 +63,8 @@ namespace GridCartes
             try
             {
                 //TODO changer adresse 
-                TcpClient tcpClient = new TcpClient(IPAddress.Loopback.ToString(), 8012);
+                //TcpClient tcpClient = new TcpClient(IPAddress.Loopback.ToString(), 8012);
+                TcpClient tcpClient = new TcpClient(serverAddress.ToString(), 8012);
                 Stream stream = tcpClient.GetStream();
 
                 ASCIIEncoding encode = new ASCIIEncoding();

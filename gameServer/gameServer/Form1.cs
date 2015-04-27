@@ -27,7 +27,6 @@ namespace gameServer
             this.started = false;
             //FIFO
             this.listWaitingClient = new Queue<String>();
-            //TODO changer le loopback
             tcpListener = new TcpListener(IPAddress.Loopback, 8012);
         }
 

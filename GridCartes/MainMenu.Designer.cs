@@ -30,6 +30,7 @@
         {
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnDeck = new System.Windows.Forms.Button();
+            this.btnOption = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPlay
@@ -52,11 +53,22 @@
             this.btnDeck.UseVisualStyleBackColor = true;
             this.btnDeck.Click += new System.EventHandler(this.btnDeck_Click);
             // 
+            // btnOption
+            // 
+            this.btnOption.Location = new System.Drawing.Point(284, 303);
+            this.btnOption.Name = "btnOption";
+            this.btnOption.Size = new System.Drawing.Size(75, 23);
+            this.btnOption.TabIndex = 2;
+            this.btnOption.Text = "Options";
+            this.btnOption.UseVisualStyleBackColor = true;
+            this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 390);
+            this.Controls.Add(this.btnOption);
             this.Controls.Add(this.btnDeck);
             this.Controls.Add(this.btnPlay);
             this.Name = "MainMenu";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnDeck;
+        private System.Windows.Forms.Button btnOption;
     }
 }
