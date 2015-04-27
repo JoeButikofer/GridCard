@@ -7,6 +7,8 @@ using System.Data.SQLite;
 
 namespace GridCartes
 {
+    public enum DeckStatus { OK, DeckTooLong, DeckTooShort, TooMuchCardUsed, DeckLevelTooHigh };
+
     public class Deck
     {
         private int id;
@@ -125,6 +127,19 @@ namespace GridCartes
                 }
 
             }
+        }
+
+        public DeckStatus isValid()
+        {
+            if (listCard.Count < 10)
+            {
+                return DeckStatus.DeckTooShort;
+            }
+            if (listCard.Count > 20)
+            {
+                return DeckStatus.DeckTooLong;
+            }
+            return DeckStatus.OK;
         }
 
     }

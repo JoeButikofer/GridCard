@@ -32,6 +32,10 @@ namespace GridCartes
                 db.execCommand(sql);
                 MessageBox.Show("Deck ajouté");
                 updateListBox();
+                Deck selectedDeck = new Deck(player.Id, textFields_Deck.Text);
+                player.CurrentDeck = selectedDeck;
+                (new DeckCustomization(player, false)).Show();
+                this.Hide();
             }
             else
             {
@@ -58,7 +62,7 @@ namespace GridCartes
             {
                 Deck selectedDeck = new Deck(player.Id, listBoxDeck.SelectedItem.ToString());
                 player.CurrentDeck = selectedDeck;
-                (new DeckCustomization(player)).Show();
+                (new DeckCustomization(player, true)).Show();
                 this.Hide();
             }
         }

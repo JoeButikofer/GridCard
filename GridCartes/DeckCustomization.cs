@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace GridCartes
 {
-    enum DeckStatus {OK, DeckTooLong, DeckTooShort, TooMuchCardUsed, DeckLevelTooHigh};
 
     public partial class DeckCustomization : Form
     {
@@ -21,7 +20,7 @@ namespace GridCartes
         private Deck currentDeck;
 
 
-        public DeckCustomization(Player _player)
+        public DeckCustomization(Player _player, bool isCancelButtonEnabled)
         {
             InitializeComponent();
             player = _player;
@@ -30,6 +29,7 @@ namespace GridCartes
             availableCards = player.getAvailableCards();
             textBoxDeckName.Size = TextRenderer.MeasureText(currentDeck.Name, textBoxDeckName.Font);
             textBoxDeckName.Text = currentDeck.Name;
+            btn_Cancel.Enabled = isCancelButtonEnabled;
 
             fillListAvailableCards();
             fillCurrentDeck();
@@ -58,7 +58,7 @@ namespace GridCartes
             listViewCards.Items.Clear();
 
             ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(50,80);
+            imageList.ImageSize = new Size(70, 100);
             foreach (Card card in availableCards.ListCard)
             {
                 imageList.Images.Add(card.Name,card.Image);
@@ -146,16 +146,7 @@ namespace GridCartes
         private DeckStatus checkDeckValidity()
         {
             //TODO check niveau du deck, nombre de cartes, ....
-
-            if (currentDeck.ListCard.Count < 10)
-            {
-                return DeckStatus.DeckTooShort;
-            }
-            if(currentDeck.ListCard.Count > 20)
-            {
-                return DeckStatus.DeckTooLong;
-            }
-            return DeckStatus.OK;
+            return currentDeck.isValid();
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)

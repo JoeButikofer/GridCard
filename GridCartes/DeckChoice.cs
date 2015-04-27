@@ -53,17 +53,22 @@ namespace GridCartes
             if (listBoxDeckChoice.SelectedItem != null)
             {
                 Deck deck = new Deck(player.Id, listBoxDeckChoice.SelectedItem.ToString());
-                player.CurrentDeck = deck;
-                connectToServer();
+                if (deck.isValid() == DeckStatus.OK)
+                {
+                    player.CurrentDeck = deck;
+                    connectToServer();
+                }
+                else
+                {
+                    MessageBox.Show("Ce deck n'est pas valide, veuillez le modifier dans la création de deck");
+                }
             }
         }
 
         private void connectToServer()
         {
-           // try
-            //{
-                //TODO changer adresse 
-                //TcpClient tcpClient = new TcpClient(IPAddress.Loopback.ToString(), 8012);
+            try
+            {
                 TcpClient tcpClient = new TcpClient(serverAddress.ToString(), 8012);
                 Stream stream = tcpClient.GetStream();
 
@@ -101,11 +106,12 @@ namespace GridCartes
                 {
                     MessageBox.Show("Invalid response from server");
                 }
-           /* }
+           
+            }
             catch (SocketException e)
             {
                 MessageBox.Show("Connexion au serveur impossible, vérifier votre connexion internet et réessayer", "Erreur réseau");
-            }*/
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
