@@ -58,7 +58,7 @@ namespace GridCartes
             listViewCards.Items.Clear();
 
             ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(50,80);
+            imageList.ImageSize = new Size(70, 100);
             foreach (Card card in availableCards.ListCard)
             {
                 imageList.Images.Add(card.Name,card.Image);

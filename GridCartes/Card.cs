@@ -104,11 +104,12 @@ namespace GridCartes
         //Add damage value to the base image of the card, so we don't have to modify the image every time we chnage the values
         private Image addValuesToImage(Image img)
         {
+            Image imgSmall = img.GetThumbnailImage(70, 100, null, IntPtr.Zero);
             //we need to create a non indexed image so we can modify it
-            Bitmap newBitmap = new Bitmap(img.Width, img.Height);
+            Bitmap newBitmap = new Bitmap(imgSmall.Width, imgSmall.Height);
             Graphics graphics = Graphics.FromImage(newBitmap);
-            graphics.DrawImage(img, 0, 0);
-            Font font = new Font("Arial", 100);
+            graphics.DrawImage(imgSmall, 0, 0);
+            Font font = new Font("Arial", 12);
             Brush brush = Brushes.Black;
 
             //Default String for the text size
@@ -117,16 +118,16 @@ namespace GridCartes
             SizeF textSize = graphics.MeasureString(text, font);
 
             text = "" + this.valueTop;
-            graphics.DrawString(text, font, brush, img.Width/2 - textSize.Width/2, 0);
+            graphics.DrawString(text, font, brush, imgSmall.Width/2 - textSize.Width/2, 0);
 
             text = "" + this.valueLeft;
-            graphics.DrawString("" + this.valueLeft, font, brush, 0, img.Height / 2-textSize.Height/2);
+            graphics.DrawString("" + this.valueLeft, font, brush, 0, imgSmall.Height / 2-textSize.Height/2);
 
             text = "" + this.valueRight;
-            graphics.DrawString("" + this.valueRight, font, brush, img.Width - textSize.Width, img.Height / 2 - textSize.Height / 2);
+            graphics.DrawString("" + this.valueRight, font, brush, imgSmall.Width - textSize.Width, imgSmall.Height / 2 - textSize.Height / 2);
 
             text = "" + this.valueBottom;
-            graphics.DrawString("" + this.valueBottom, font, brush, img.Width / 2 - textSize.Width / 2, img.Height - textSize.Height);
+            graphics.DrawString("" + this.valueBottom, font, brush, imgSmall.Width / 2 - textSize.Width / 2, imgSmall.Height - textSize.Height);
 
             return newBitmap;
         }
