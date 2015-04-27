@@ -84,9 +84,9 @@ namespace GridCartes
                 tcpClient.Close();
                 IPAddress ipAddress = null;
                 //There are 3 possible reponse from the server :
-                // - an IP address, it mean that this will be the client
-                // - "SERVER", it mean that this will be the server
-                // - other, a invalid response
+                // - an IP address, it means that this will be the client
+                // - "SERVER", it means that this will be the server
+                // - other, an invalid response
                 if (IPAddress.TryParse(responseFromServer, out ipAddress))
                 {
                     (new GameBoard(player, responseFromServer)).Show();

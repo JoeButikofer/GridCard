@@ -68,8 +68,8 @@ namespace GridCartes
             reader.Read();
             int availableCardsId = int.Parse("" + reader["ID"]);
 
-             //TODO prendre les decks depuis un fichier (XML ou autre)
-            for (int i = 1; i <= 3;i++)
+            //TODO prendre les decks depuis un fichier (XML ou autre)
+            for (int i = 4; i <= 13;i++)
             {
                 sql = "insert into CartesDecks (ID_Decks, ID_Cartes) values (\'"+availableCardsId+"\',\'" + i + "\');";
                 db.execCommand(sql);
@@ -86,7 +86,7 @@ namespace GridCartes
             int defaultId = int.Parse("" + reader["ID"]);
 
             //TODO prendre les decks depuis un fichier (XML ou autre)
-            for (int i = 1; i <= 2; i++)
+            for (int i = 4; i <= 13; i++)
             {
                 sql = "insert into CartesDecks (ID_Decks, ID_Cartes) values (\'"+defaultId+"\',\'" + i + "\');";
                 db.execCommand(sql);
