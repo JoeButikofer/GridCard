@@ -48,7 +48,6 @@ namespace GridCartes
 
             waitingForm = new WaitingScreen();
             waitingForm.Show();
-            //tcpListener = new TcpListener(IPAddress.Loopback, 8013);
             tcpListener = new TcpListener(IPAddress.Any, 8013);
             tcpListener.Start();
             Task task = ReadAsync();
@@ -83,6 +82,7 @@ namespace GridCartes
             myScore = 0;
             hisScore = 0;
 
+            //Populates the player deck 
             int width = (int)(tableLayoutPanel1.Size.Width / 4);
             int height = (int)(tableLayoutPanel1.Size.Height / 4);
 
@@ -161,6 +161,8 @@ namespace GridCartes
         protected override void OnVisibleChanged(EventArgs e)
         {
             base.OnVisibleChanged(e);
+
+            //when we create the server we want to hide this form for display a waiting screen
             if (this.tcpClient == null)
             {
                 this.Visible = false;
@@ -195,13 +197,17 @@ namespace GridCartes
         private void fillHandCards()
         {
             listViewHandCards.Clear();
+            listViewHandCards.Items.Clear();
+
+            int count = 0;
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(50, 80);
             foreach (Card card in currentDeck.ListCard)
             {
-                imageList.Images.Add(card.Name, card.Image);
                 var listViewItem = listViewHandCards.Items.Add(card.Name);
-                listViewItem.ImageKey = card.Name;
+                listViewItem.ImageKey = ""+count;
+                imageList.Images.Add(""+count, card.Image);
+                count++;
             }
             listViewHandCards.LargeImageList = imageList;
         }
@@ -209,7 +215,6 @@ namespace GridCartes
         private void listViewHandCards_ItemActivate(object sender, EventArgs e)
         {
             int i = listViewHandCards.SelectedIndices[0];
-            string s = listViewHandCards.Items[i].Text;
 
             selectedCard = currentDeck.ListCard.ElementAt(i);
 
@@ -405,7 +410,6 @@ namespace GridCartes
         {
             closeConnections();
 
-            //TODO redirection écran
             if(myScore > hisScore)
             {
                 //Victory !!!
@@ -433,6 +437,10 @@ namespace GridCartes
             if (tcpClient != null)
             {
                 tcpClient.Close();
+            }
+            if (tcpListener != null)
+            {
+                tcpListener.Stop();
             }
         }
 

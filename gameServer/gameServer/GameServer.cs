@@ -27,8 +27,6 @@ namespace gameServer
             this.started = false;
             //FIFO
             this.listWaitingClient = new Queue<String>();
-            //tcpListener = new TcpListener(IPAddress.Loopback, 8012);
-            //tcpListener = new TcpListener(IPAddress.Parse("157.26.111.106"), 8012);
             tcpListener = new TcpListener(IPAddress.Any, 8012);
         }
 
@@ -42,6 +40,7 @@ namespace gameServer
         private void btn_Stop_Click(object sender, EventArgs e)
         {
             changeState();
+            listWaitingClient.Clear();
             tcpListener.Stop();
         }
 

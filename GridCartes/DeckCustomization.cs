@@ -37,16 +37,19 @@ namespace GridCartes
 
         private void fillCurrentDeck()
         {
+            listViewDeck.Clear();
             listViewDeck.Items.Clear();
 
+            int index = 0;
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(50, 80);
             foreach (Card card in currentDeck.ListCard)
             {
-                imageList.Images.Add(card.Name, card.Image);
+                imageList.Images.Add(""+index, card.Image);
                 var listViewItem = listViewDeck.Items.Add(card.Name);
-                listViewItem.ImageKey = card.Name;
+                listViewItem.ImageKey = ""+index;
 
+                index++;
             }
             listViewDeck.LargeImageList = imageList;
 
@@ -55,16 +58,19 @@ namespace GridCartes
 
         private void fillListAvailableCards()
         {
+            listViewCards.Clear();
             listViewCards.Items.Clear();
 
+            int index = 0;
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(70, 100);
             foreach (Card card in availableCards.ListCard)
             {
-                imageList.Images.Add(card.Name,card.Image);
+                imageList.Images.Add("" + index, card.Image);
                 var listViewItem = listViewCards.Items.Add(card.Name);
-                listViewItem.ImageKey = card.Name;
-                
+                listViewItem.ImageKey = "" + index;
+
+                index++;
             }
             listViewCards.LargeImageList = imageList;
 
@@ -101,9 +107,11 @@ namespace GridCartes
         {
             int i = listViewDeck.SelectedIndices[0];
 
-            currentDeck.ListCard.RemoveAt(i);
-            listViewDeck.Items.RemoveAt(i);
+            Card card = currentDeck.ListCard.ElementAt(i);
+            currentDeck.removeCard(card);
             lbl_NbCards.Text = "Nombre de cartes : " + currentDeck.ListCard.Count;
+
+            fillCurrentDeck();
 
         }
 
