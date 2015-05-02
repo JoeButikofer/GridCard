@@ -72,7 +72,8 @@
             this.Controls.Add(this.btnDeck);
             this.Controls.Add(this.btnPlay);
             this.Name = "MainMenu";
-            this.Text = "A changer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Grid Cards";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.ResumeLayout(false);
 

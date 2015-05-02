@@ -14,21 +14,19 @@ using System.Windows.Forms;
 
 namespace gameServer
 {
-    public partial class Form1 : Form
+    public partial class GameServer : Form
     {
         private TcpListener tcpListener;
         private bool started;
         private Queue<String> listWaitingClient;
 
-        public Form1()
+        public GameServer()
         {
             InitializeComponent();
             this.btn_Stop.Enabled = false;
             this.started = false;
             //FIFO
             this.listWaitingClient = new Queue<String>();
-            //tcpListener = new TcpListener(IPAddress.Loopback, 8012);
-            //tcpListener = new TcpListener(IPAddress.Parse("157.26.111.106"), 8012);
             tcpListener = new TcpListener(IPAddress.Any, 8012);
         }
 
@@ -42,6 +40,7 @@ namespace gameServer
         private void btn_Stop_Click(object sender, EventArgs e)
         {
             changeState();
+            listWaitingClient.Clear();
             tcpListener.Stop();
         }
 

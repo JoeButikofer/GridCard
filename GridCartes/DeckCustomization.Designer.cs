@@ -140,7 +140,8 @@
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Apply);
             this.Name = "DeckCustomization";
-            this.Text = "DeckCustomization";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Grid Cards";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DeckCustomization_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

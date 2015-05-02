@@ -50,7 +50,8 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.label1);
             this.Name = "WaitingScreen";
-            this.Text = "WaitingScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Grid Cards";
             this.ResumeLayout(false);
             this.PerformLayout();
 

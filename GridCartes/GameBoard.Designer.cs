@@ -76,7 +76,7 @@
             this.listViewHandCards.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listViewHandCards.Location = new System.Drawing.Point(167, 471);
             this.listViewHandCards.Name = "listViewHandCards";
-            this.listViewHandCards.Size = new System.Drawing.Size(408, 142);
+            this.listViewHandCards.Size = new System.Drawing.Size(487, 142);
             this.listViewHandCards.TabIndex = 1;
             this.listViewHandCards.UseCompatibleStateImageBehavior = false;
             this.listViewHandCards.ItemActivate += new System.EventHandler(this.listViewHandCards_ItemActivate);
@@ -192,7 +192,8 @@
             this.ClientSize = new System.Drawing.Size(822, 620);
             this.Controls.Add(this.tableLayoutGame);
             this.Name = "GameBoard";
-            this.Text = "GameBoard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Grid Cards";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameBoard_FormClosed);
             this.tableLayoutGame.ResumeLayout(false);
             this.tableLayoutGame.PerformLayout();

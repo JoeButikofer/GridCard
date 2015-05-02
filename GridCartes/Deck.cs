@@ -113,15 +113,6 @@ namespace GridCartes
 
                 for(int i = 0;i<nbCartes;i++)
                 {
-                    /*String name = ""+readerCard["Nom"];
-                    int valueTop = int.Parse(""+readerCard["Value_Haut"]);
-                    int valueLeft = int.Parse(""+readerCard["Value_Gauche"]);
-                    int valueRight = int.Parse(""+readerCard["Value_Droite"]);
-                    int valueBottom = int.Parse(""+readerCard["Value_Bas"]);
-                    int level = int.Parse(""+readerCard["Level"]);
-                    String imagePath = ""+readerCard["Path_Img"];*/
-                    
-                    //Card card = new Card(int.Parse(carteId),name,valueTop,valueLeft,valueRight,valueBottom,level,imagePath);
                     Card card = new Card(int.Parse(carteId));
                     addCard(card);
                 }
@@ -129,6 +120,7 @@ namespace GridCartes
             }
         }
 
+        //Check the validity of the deck (number of cards, number of same cards)
         public DeckStatus isValid()
         {
             if (listCard.Count < 10)
@@ -139,7 +131,24 @@ namespace GridCartes
             {
                 return DeckStatus.DeckTooLong;
             }
+
+            if(!checkNumberOfSameCards())
+            {
+                return DeckStatus.TooMuchCardUsed;
+            }
+
             return DeckStatus.OK;
+        }
+
+        //Check if we have a maximum of 2 same cards
+        private bool checkNumberOfSameCards()
+        {
+            foreach(Card card in listCard)
+            {
+                int count = listCard.Count(item => item.Name == card.Name);
+                if (count > 2) return false;
+            }
+            return true;
         }
 
     }

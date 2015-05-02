@@ -59,7 +59,7 @@
             // 
             // btnMenu
             // 
-            this.btnMenu.Location = new System.Drawing.Point(53, 227);
+            this.btnMenu.Location = new System.Drawing.Point(48, 233);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(166, 23);
             this.btnMenu.TabIndex = 5;
@@ -69,9 +69,9 @@
             // 
             // pictureBoxNewCard
             // 
-            this.pictureBoxNewCard.Location = new System.Drawing.Point(78, 127);
+            this.pictureBoxNewCard.Location = new System.Drawing.Point(105, 127);
             this.pictureBoxNewCard.Name = "pictureBoxNewCard";
-            this.pictureBoxNewCard.Size = new System.Drawing.Size(113, 97);
+            this.pictureBoxNewCard.Size = new System.Drawing.Size(70, 100);
             this.pictureBoxNewCard.TabIndex = 6;
             this.pictureBoxNewCard.TabStop = false;
             // 
@@ -89,14 +89,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(295, 285);
             this.Controls.Add(this.lblCardMessage);
             this.Controls.Add(this.pictureBoxNewCard);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "VictoryScreen";
-            this.Text = "VictoryScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Grid Cards";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VictoryScreen_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewCard)).EndInit();
             this.ResumeLayout(false);

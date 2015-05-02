@@ -37,16 +37,19 @@ namespace GridCartes
 
         private void fillCurrentDeck()
         {
+            listViewDeck.Clear();
             listViewDeck.Items.Clear();
 
+            int index = 0;
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(50, 80);
             foreach (Card card in currentDeck.ListCard)
             {
-                imageList.Images.Add(card.Name, card.Image);
+                imageList.Images.Add(""+index, card.Image);
                 var listViewItem = listViewDeck.Items.Add(card.Name);
-                listViewItem.ImageKey = card.Name;
+                listViewItem.ImageKey = ""+index;
 
+                index++;
             }
             listViewDeck.LargeImageList = imageList;
 
@@ -55,16 +58,19 @@ namespace GridCartes
 
         private void fillListAvailableCards()
         {
+            listViewCards.Clear();
             listViewCards.Items.Clear();
 
+            int index = 0;
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(70, 100);
             foreach (Card card in availableCards.ListCard)
             {
-                imageList.Images.Add(card.Name,card.Image);
+                imageList.Images.Add("" + index, card.Image);
                 var listViewItem = listViewCards.Items.Add(card.Name);
-                listViewItem.ImageKey = card.Name;
-                
+                listViewItem.ImageKey = "" + index;
+
+                index++;
             }
             listViewCards.LargeImageList = imageList;
 
@@ -79,7 +85,6 @@ namespace GridCartes
         private void listViewCards_ItemActivate(object sender, EventArgs e)
         {
             int i = listViewCards.SelectedIndices[0];
-            string s = listViewCards.Items[i].Text;
 
             Card selectedCard = availableCards.ListCard.ElementAt(i);
 
@@ -102,9 +107,11 @@ namespace GridCartes
         {
             int i = listViewDeck.SelectedIndices[0];
 
-            currentDeck.ListCard.RemoveAt(i);
-            listViewDeck.Items.RemoveAt(i);
+            Card card = currentDeck.ListCard.ElementAt(i);
+            currentDeck.removeCard(card);
             lbl_NbCards.Text = "Nombre de cartes : " + currentDeck.ListCard.Count;
+
+            fillCurrentDeck();
 
         }
 
@@ -131,6 +138,9 @@ namespace GridCartes
                 case DeckStatus.DeckTooShort:
                      MessageBox.Show("Le deck ne contient pas assez de cartes, il doit contenir au minimum 10 cartes");
                     break;
+                case DeckStatus.TooMuchCardUsed:
+                    MessageBox.Show("Le deck contient trop de cartes semblables, le maximum est 2");
+                    break;
                 default:
                     MessageBox.Show("Erreur inconnue");
                     break;
@@ -139,13 +149,16 @@ namespace GridCartes
 
         private DeckStatus checkCardToDeckValidity(Card card)
         {
-            //TODO check niveau du deck, nombre de cartes, ....
+            //Check if we have a maximum of 2 same cards
+            int count = currentDeck.ListCard.Count(item => item.Name == card.Name);
+            if (count > 1) return DeckStatus.TooMuchCardUsed;
+
             return DeckStatus.OK;
         }
 
         private DeckStatus checkDeckValidity()
         {
-            //TODO check niveau du deck, nombre de cartes, ....
+            //TODO check niveau du deck
             return currentDeck.isValid();
         }
 

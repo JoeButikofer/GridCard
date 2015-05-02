@@ -48,7 +48,6 @@ namespace GridCartes
 
             waitingForm = new WaitingScreen();
             waitingForm.Show();
-            //tcpListener = new TcpListener(IPAddress.Loopback, 8013);
             tcpListener = new TcpListener(IPAddress.Any, 8013);
             tcpListener.Start();
             Task task = ReadAsync();
@@ -77,12 +76,14 @@ namespace GridCartes
             tabCase = new Case[4,4];
             player = p;
             currentDeck = player.CurrentDeck;
+            randomizeDeck();
             isBlockPowerSelected = false;
             isDestroyPowerSelected = false;
             isPowerUsed = false;
             myScore = 0;
             hisScore = 0;
 
+            //Populates the grid with clickable panels
             int width = (int)(tableLayoutPanel1.Size.Width / 4);
             int height = (int)(tableLayoutPanel1.Size.Height / 4);
 
@@ -95,6 +96,17 @@ namespace GridCartes
                 }
             }
             fillHandCards();
+        }
+
+        // Reduces the deck to 10 random cards
+        private void randomizeDeck()
+        {
+            Random randomGen = new Random();
+            while(currentDeck.ListCard.Count > 10)
+            {
+                int rand = randomGen.Next(currentDeck.ListCard.Count);
+                currentDeck.ListCard.RemoveAt(rand);
+            }
         }
         
         //Method call from one of the panel when clicked
@@ -161,6 +173,8 @@ namespace GridCartes
         protected override void OnVisibleChanged(EventArgs e)
         {
             base.OnVisibleChanged(e);
+
+            //when we create the server we want to hide this form for display a waiting screen
             if (this.tcpClient == null)
             {
                 this.Visible = false;
@@ -195,13 +209,17 @@ namespace GridCartes
         private void fillHandCards()
         {
             listViewHandCards.Clear();
+            listViewHandCards.Items.Clear();
+
+            int count = 0;
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(50, 80);
             foreach (Card card in currentDeck.ListCard)
             {
-                imageList.Images.Add(card.Name, card.Image);
                 var listViewItem = listViewHandCards.Items.Add(card.Name);
-                listViewItem.ImageKey = card.Name;
+                listViewItem.ImageKey = ""+count;
+                imageList.Images.Add(""+count, card.Image);
+                count++;
             }
             listViewHandCards.LargeImageList = imageList;
         }
@@ -209,7 +227,6 @@ namespace GridCartes
         private void listViewHandCards_ItemActivate(object sender, EventArgs e)
         {
             int i = listViewHandCards.SelectedIndices[0];
-            string s = listViewHandCards.Items[i].Text;
 
             selectedCard = currentDeck.ListCard.ElementAt(i);
 
@@ -405,7 +422,6 @@ namespace GridCartes
         {
             closeConnections();
 
-            //TODO redirection écran
             if(myScore > hisScore)
             {
                 //Victory !!!
@@ -433,6 +449,10 @@ namespace GridCartes
             if (tcpClient != null)
             {
                 tcpClient.Close();
+            }
+            if (tcpListener != null)
+            {
+                tcpListener.Stop();
             }
         }
 

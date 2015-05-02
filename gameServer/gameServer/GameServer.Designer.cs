@@ -1,6 +1,6 @@
 ﻿namespace gameServer
 {
-    partial class Form1
+    partial class GameServer
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -60,7 +60,8 @@
             this.Controls.Add(this.btn_Stop);
             this.Controls.Add(this.btn_Start);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Game Server";
             this.ResumeLayout(false);
 
         }
