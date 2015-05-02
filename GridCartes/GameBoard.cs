@@ -76,13 +76,14 @@ namespace GridCartes
             tabCase = new Case[4,4];
             player = p;
             currentDeck = player.CurrentDeck;
+            randomizeDeck();
             isBlockPowerSelected = false;
             isDestroyPowerSelected = false;
             isPowerUsed = false;
             myScore = 0;
             hisScore = 0;
 
-            //Populates the player deck 
+            //Populates the grid with clickable panels
             int width = (int)(tableLayoutPanel1.Size.Width / 4);
             int height = (int)(tableLayoutPanel1.Size.Height / 4);
 
@@ -95,6 +96,17 @@ namespace GridCartes
                 }
             }
             fillHandCards();
+        }
+
+        // Reduces the deck to 10 random cards
+        private void randomizeDeck()
+        {
+            Random randomGen = new Random();
+            while(currentDeck.ListCard.Count > 10)
+            {
+                int rand = randomGen.Next(currentDeck.ListCard.Count);
+                currentDeck.ListCard.RemoveAt(rand);
+            }
         }
         
         //Method call from one of the panel when clicked
