@@ -32,12 +32,13 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.textBoxIP = new System.Windows.Forms.TextBox();
             this.labelIP = new System.Windows.Forms.Label();
+            this.btnLocalhost = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(12, 76);
+            this.btnCancel.Location = new System.Drawing.Point(12, 96);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 0;
@@ -47,7 +48,7 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(147, 76);
+            this.btnApply.Location = new System.Drawing.Point(147, 96);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(75, 23);
             this.btnApply.TabIndex = 1;
@@ -71,6 +72,16 @@
             this.labelIP.TabIndex = 3;
             this.labelIP.Text = "Adresse du serveur :";
             // 
+            // btnLocalhost
+            // 
+            this.btnLocalhost.Location = new System.Drawing.Point(122, 65);
+            this.btnLocalhost.Name = "btnLocalhost";
+            this.btnLocalhost.Size = new System.Drawing.Size(132, 25);
+            this.btnLocalhost.TabIndex = 4;
+            this.btnLocalhost.Text = "localhost";
+            this.btnLocalhost.UseVisualStyleBackColor = true;
+            this.btnLocalhost.Click += new System.EventHandler(this.btnLocalhost_Click);
+            // 
             // InputTextForm
             // 
             this.AcceptButton = this.btnApply;
@@ -78,6 +89,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(262, 134);
+            this.Controls.Add(this.btnLocalhost);
             this.Controls.Add(this.labelIP);
             this.Controls.Add(this.textBoxIP);
             this.Controls.Add(this.btnApply);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.TextBox textBoxIP;
         private System.Windows.Forms.Label labelIP;
+        private System.Windows.Forms.Button btnLocalhost;
     }
 }

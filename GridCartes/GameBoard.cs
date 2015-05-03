@@ -338,7 +338,7 @@ namespace GridCartes
         //  CHAT/content/
         //  CHAT : for indicating it's a chat message
         //  content : content of the message
-        // NOTE :We need the last '/' because is used for terminating the message and help to preventing error
+        // NOTE :We need the last '/' because is used for terminating the message and help to prevent error
         // causing by additionnal characters in the end of the message 
         private void sendMessage(String message)
         {

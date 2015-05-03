@@ -16,6 +16,7 @@ namespace GridCartes
         {
             InitializeComponent();
             textBoxIP.Text = oldAddress;
+            this.btnApply.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -25,12 +26,17 @@ namespace GridCartes
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            this.btnApply.DialogResult = System.Windows.Forms.DialogResult.OK;
+
         }
 
         internal string getAddress()
         {
             return textBoxIP.Text;
+        }
+
+        private void btnLocalhost_Click(object sender, EventArgs e)
+        {
+            textBoxIP.Text = "127.0.0.1";
         }
     }
 }

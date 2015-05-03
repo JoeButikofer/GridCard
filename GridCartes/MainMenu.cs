@@ -21,7 +21,32 @@ namespace GridCartes
         {
             InitializeComponent();
             namePlayer = name;
+            if (File.Exists("serverAddress.txt"))
+            {
+                String text = File.ReadAllText("serverAddress.txt");
+                IPAddress ipAddress = null;
+                if(IPAddress.TryParse(text, out ipAddress))
+                {
+                    serverAddress = IPAddress.Parse(text);
+                }
+                else
+                {
+                    setDefaultAddress();
+                }
+               
+            }
+            else
+            {
+                setDefaultAddress();
+            }
+        }
+
+        private void setDefaultAddress()
+        {
             serverAddress = IPAddress.Loopback;
+            StreamWriter streamFile = File.CreateText("serverAddress.txt");
+            streamFile.Write("127.0.0.1");
+            streamFile.Close();
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
@@ -54,7 +79,10 @@ namespace GridCartes
               IPAddress ipAddress = null;
               if (IPAddress.TryParse(address, out ipAddress))
               {
+                  StreamWriter streamFile = File.CreateText("serverAddress.txt");
+                  streamFile.Write(address);
                   serverAddress = IPAddress.Parse(address);
+                  streamFile.Close();
               }
               else
               {
