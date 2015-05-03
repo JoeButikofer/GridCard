@@ -344,12 +344,22 @@ namespace GridCartes
         {
             if (message.Length > 0)
             {
-                Stream stream = tcpClient.GetStream();
+                try
+                {
+                    Stream stream = tcpClient.GetStream();
 
-                byte[] byteMessage = Encoding.UTF8.GetBytes(message);
-                Console.WriteLine("Send : " + message);
-                if(DEBUGMESSAGE == true) listBoxChat.Items.Add("Send : " + message);
-                stream.Write(byteMessage, 0, byteMessage.Length);
+                    byte[] byteMessage = Encoding.UTF8.GetBytes(message);
+                    Console.WriteLine("Send : " + message);
+                    if (DEBUGMESSAGE == true) listBoxChat.Items.Add("Send : " + message);
+                    stream.Write(byteMessage, 0, byteMessage.Length);
+                }
+                catch(Exception e)
+                {
+                    closeConnections();
+                    MessageBox.Show("La connexion à votre adversaire a été perdu. Retour au menu principal");
+                    (new MainMenu(player.Pseudo)).Show();
+                    this.Hide();
+                }
             }
         }
 
